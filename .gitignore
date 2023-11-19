@@ -72,6 +72,7 @@ obj/
 
 # User-specific configurations
 .idea/caches/
+.idea/inspectionProfiles/
 .idea/libraries/
 .idea/shelf/
 .idea/workspace.xml
@@ -136,3 +137,7 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio
 
 /.idea/androidTestResultsUserPreferences.xml
+
+notebooks/wandb
+
+ml_artifacts/
