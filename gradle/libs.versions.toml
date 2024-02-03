@@ -3,10 +3,22 @@ androidx-activity = "1.7.0"
 compose = "1.2.0"
 compose-material3 = "1.0.0-alpha11"
 espresso = "3.5.1"
-gradle-plugin = "7.4.2"
+gradle-plugin = "8.1.4"
+grpc-kotlin = "1.4.0"
+grpc-java = "1.59.0"
+java = "17"
+javax-annotation = "1.3.2"
+johnrengelman-shadow = "8.1.1"
 junit = "4.13.2"
 junit-android-ext = "1.1.5"
-kotlin = "1.8.0"
+kotlin = "1.9.20"
+kotlin-dl = "0.5.2"
+log4j2 = "2.21.1"
+protobuf-gradle = "0.9.4"
+protobuf = "3.25.0"
+scram-client = "2.1"
+vertx = "4.4.6"
+vertx-grpc-server = "4.3.7"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
@@ -17,9 +29,30 @@ compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", ve
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
+grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc-java" }
+javax-annotation = { module = "javax.annotation:javax.annotation-api", version.ref = "javax-annotation" }
 junit = { module = "junit:junit", version.ref = "junit" }
 junit-android-ext = { module = "androidx.test.ext:junit", version.ref = "junit-android-ext" }
+kotlin-dl-api = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-api", version.ref = "kotlin-dl" }
+kotlin-dl-implementation = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-implementation", version.ref = "kotlin-dl" }
+kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
+log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2" }
+log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2" }
+log4j2-slfj-impl = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2" }
+protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobuf" }
+protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
+scram-client = { module = "com.ongres.scram:client", version.ref = "scram-client" }
+vertx-coroutines = { module = "io.vertx:vertx-lang-kotlin-coroutines", version.ref = "vertx" }
+vertx-grpc-server = { module = "io.vertx:vertx-grpc-server", version.ref = "vertx-grpc-server" }
+vertx-kotlin = { module = "io.vertx:vertx-lang-kotlin", version.ref = "vertx" }
+vertx-postgres-client = { module = "io.vertx:vertx-pg-client", version.ref = "vertx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
+johnrengelman-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "johnrengelman-shadow" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+protobuf = { id = "com.google.protobuf", version.ref = "protobuf-gradle" }
+protoc-grpc-java = { id = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc-java" }
+protoc-grpc-kotlin = { id = "io.grpc:protoc-gen-grpc-kotlin", version.ref = "grpc-kotlin" }

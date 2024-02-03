@@ -1,5 +1,6 @@
-# Created by https://www.toptal.com/developers/gitignore/api/androidstudio
-# Edit at https://www.toptal.com/developers/gitignore?templates=androidstudio
+# Sources used creating this file's content:
+# - https://www.toptal.com/developers/gitignore/api/androidstudio
+# - https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 
 ### AndroidStudio ###
 # Covers files to be ignored for android development using Android Studio.
@@ -142,3 +143,9 @@ notebooks/wandb
 
 ml_artifacts/
 notebooks/two_tower_model_clothing_recommendation_system_cache
+
+# Sensitive or high-churn files
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
