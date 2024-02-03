@@ -5,18 +5,23 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+dependencies {
+    implementation(projects.client)
+
+    implementation(libs.androidx.activity.compose)
+}
+
 android {
     namespace = "hu.bme.aut.ixnoyb.kotlinclothingwebshop.android"
-    compileSdk = 33
+    compileSdk = libs.versions.android.sdk.compile.get().toInt()
 
     defaultConfig {
         applicationId = "hu.bme.aut.ixnoyb.kotlinclothingwebshop.android"
-        minSdk = 21
-        targetSdk = 33
+        minSdk = libs.versions.android.sdk.min.get().toInt()
+        targetSdk = libs.versions.android.sdk.compile.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -29,37 +34,23 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        val javaVersionEnumName = "VERSION_${libs.versions.java.get()}"
+
+        sourceCompatibility = JavaVersion.valueOf(javaVersionEnumName)
+        targetCompatibility = JavaVersion.valueOf(javaVersionEnumName)
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = libs.versions.java.get()
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.0"
+        kotlinCompilerExtensionVersion = libs.versions.compose.jetpack.get()
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-}
-
-dependencies {
-    implementation(libs.androidx.activity.compose)
-    implementation(libs.compose.material3)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling.preview)
-
-    testImplementation(libs.junit)
-
-    androidTestImplementation(libs.compose.ui.test.junit4)
-    androidTestImplementation(libs.junit.android.ext)
-    androidTestImplementation(libs.espresso.core)
-
-    debugImplementation(libs.compose.ui.test.manifest)
-    debugImplementation(libs.compose.ui.tooling)
 }
