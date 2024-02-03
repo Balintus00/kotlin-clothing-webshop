@@ -1,0 +1,14 @@
+version: "3.0"
+
+services:
+  db:
+    hostname: clothing_webshop_db
+    image: ankane/pgvector
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
