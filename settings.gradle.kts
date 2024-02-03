@@ -18,3 +18,4 @@ dependencyResolutionManagement {
 rootProject.name = "KotlinClothingWebshop"
 
 include(":android")
+include(":backend")
