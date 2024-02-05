@@ -20,7 +20,7 @@ android {
         minSdk = libs.versions.android.sdk.min.get().toInt()
         targetSdk = libs.versions.android.sdk.compile.get().toInt()
         versionCode = 1
-        versionName = "1.0"
+        versionName = libs.versions.kotlin.clothing.webshop.get()
 
         vectorDrawables {
             useSupportLibrary = true
