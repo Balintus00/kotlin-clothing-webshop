@@ -7,6 +7,16 @@ plugins {
 
 kotlin {
     androidTarget()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "client"
+            isStatic = true
+        }
+    }
     jvm()
 
     sourceSets {
@@ -53,6 +63,8 @@ android {
         debugImplementation(libs.compose.jetpack.tooling)
     }
 }
+
+// TODO is it needed?
 dependencies {
     implementation(project(mapOf("path" to ":jvm_grpc_client")))
     implementation(project(mapOf("path" to ":jvm_grpc_client")))
