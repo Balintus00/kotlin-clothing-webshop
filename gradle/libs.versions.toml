@@ -6,52 +6,26 @@ androidx-core = "1.12.0"
 compose-jetpack = "1.5.4"
 compose-multipatform = "1.6.0-beta01"
 gradle-plugin = "8.1.4"
-grpc-kotlin = "1.4.0"
-grpc-java = "1.59.0"
 java = "17"
-javax-annotation = "1.3.2"
-johnrengelman-shadow = "8.1.1"
 kotlin = "1.9.22"
 kotlin-clothing-webshop = "0.1.0"
 kotlin-dl = "0.5.2"
 log4j2 = "2.21.1"
-protobuf-gradle = "0.9.4"
-protobuf = "3.25.0"
-scram-client = "2.1"
-vertx = "4.4.6"
-vertx-grpc-server = "4.3.7"
-wire = "4.9.2"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 compose-jetpack-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-jetpack" }
 compose-jetpack-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-jetpack" }
-grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
-grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc-java" }
-javax-annotation = { module = "javax.annotation:javax.annotation-api", version.ref = "javax-annotation" }
 kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
 log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2" }
 log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2" }
 log4j2-slfj-impl = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2" }
-protobuf-kotlin = { module = "com.google.protobuf:protobuf-kotlin", version.ref = "protobuf" }
-protoc = { module = "com.google.protobuf:protoc", version.ref = "protobuf" }
-scram-client = { module = "com.ongres.scram:client", version.ref = "scram-client" }
-vertx-coroutines = { module = "io.vertx:vertx-lang-kotlin-coroutines", version.ref = "vertx" }
-vertx-grpc-server = { module = "io.vertx:vertx-grpc-server", version.ref = "vertx-grpc-server" }
-vertx-kotlin = { module = "io.vertx:vertx-lang-kotlin", version.ref = "vertx" }
-vertx-postgres-client = { module = "io.vertx:vertx-pg-client", version.ref = "vertx" }
-wire-grpc-client = { module = " com.squareup.wire:wire-grpc-client", version.ref = "wire" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
 android-library = { id = "com.android.library", version.ref = "gradle-plugin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multipatform" }
-johnrengelman-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "johnrengelman-shadow" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-protobuf = { id = "com.google.protobuf", version.ref = "protobuf-gradle" }
-protoc-grpc-java = { id = "io.grpc:protoc-gen-grpc-java", version.ref = "grpc-java" }
-protoc-grpc-kotlin = { id = "io.grpc:protoc-gen-grpc-kotlin", version.ref = "grpc-kotlin" }
-wire = { id = "com.squareup.wire", version.ref = "wire" }

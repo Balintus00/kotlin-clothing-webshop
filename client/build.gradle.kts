@@ -35,14 +35,8 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation(projects.jvmGrpcClient)
                 implementation(libs.androidx.core)
                 implementation(libs.compose.jetpack.preview)
-            }
-        }
-        val jvmMain by getting {
-            dependencies {
-                implementation(projects.jvmGrpcClient)
             }
         }
     }

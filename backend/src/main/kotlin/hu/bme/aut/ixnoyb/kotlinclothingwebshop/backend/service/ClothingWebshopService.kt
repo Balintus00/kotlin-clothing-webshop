@@ -1,23 +1,15 @@
-package hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.grpc
+package hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.service
 
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.api.grpc.ClothingWebshopGrpcKt
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.api.grpc.IdRequest
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.api.grpc.ListIdResponse
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.api.grpc.listIdResponse
-import io.vertx.kotlin.coroutines.await
-import io.vertx.sqlclient.SqlClient
 import org.jetbrains.kotlinx.dl.onnx.inference.OnnxInferenceModel
 import org.jetbrains.kotlinx.dl.onnx.inference.executionproviders.ExecutionProvider
 import org.jetbrains.kotlinx.dl.onnx.inference.inferAndCloseUsing
 import org.slf4j.LoggerFactory
 
-class ClothingWebshopGrpcService(
-    private val sqlClient: SqlClient,
-) : ClothingWebshopGrpcKt.ClothingWebshopCoroutineImplBase() {
+class ClothingWebshopService {
 
-    override suspend fun getRecommendedArticleIds(request: IdRequest): ListIdResponse {
+    suspend fun getRecommendedArticleIds(customerId: String): List<String> {
         try {
-            logger.info("getRecommendedArticleIds called with ${request.id}")
+            logger.info("getRecommendedArticleIds called with $customerId")
 
             val model = OnnxInferenceModel.load(QUERY_MODEL_PATH)
             val queryVector = model.inferAndCloseUsing(ExecutionProvider.CPU()) { inferenceModel ->
@@ -46,17 +38,16 @@ class ClothingWebshopGrpcService(
 
             logger.debug("SQL query to execute:\n$sqlQuery")
 
-            val recommendedArticleIds = sqlClient
-                .query(sqlQuery)
-                .execute()
-                .await()
+//            val recommendedArticleIds = sqlClient
+//                .query(sqlQuery)
+//                .execute()
+//                .await()
 
-            val result = recommendedArticleIds.map { "${it.getInteger("articles_id")}" }
+            //val result = recommendedArticleIds.map { "${it.getInteger("articles_id")}" }
+            val result = listOf("1", "2", "3")
             logger.info("ANN search result: $result")
 
-            return listIdResponse {
-                ids.addAll(result.toSet())
-            }
+            return result
         } catch (t: Throwable) {
             logger.error("getRecommendedArticleIds operation failed!", t)
             throw t
@@ -65,7 +56,7 @@ class ClothingWebshopGrpcService(
 
     companion object {
         @JvmStatic
-        private val logger = LoggerFactory.getLogger(ClothingWebshopGrpcService::class.java)
+        private val logger = LoggerFactory.getLogger(ClothingWebshopService::class.java)
 
         private const val QUERY_MODEL_PATH = "src/main/resources/retrieval_query_tower_model.onnx"
     }
