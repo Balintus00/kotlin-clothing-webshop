@@ -69,9 +69,3 @@ android {
         debugImplementation(libs.compose.jetpack.tooling)
     }
 }
-
-// TODO is it needed?
-dependencies {
-    implementation(project(mapOf("path" to ":jvm_grpc_client")))
-    implementation(project(mapOf("path" to ":jvm_grpc_client")))
-}
