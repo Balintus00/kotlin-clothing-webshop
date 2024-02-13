@@ -30,8 +30,6 @@ compose-jetpack-tooling = { module = "androidx.compose.ui:ui-tooling", version.r
 grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpc-kotlin" }
 grpc-protobuf = { module = "io.grpc:grpc-protobuf", version.ref = "grpc-java" }
 javax-annotation = { module = "javax.annotation:javax.annotation-api", version.ref = "javax-annotation" }
-kotlin-dl-api = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-api", version.ref = "kotlin-dl" }
-kotlin-dl-implementation = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-implementation", version.ref = "kotlin-dl" }
 kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
 log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2" }
 log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2" }
