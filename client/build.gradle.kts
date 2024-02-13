@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -18,6 +20,10 @@ kotlin {
         }
     }
     jvm()
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -62,10 +68,4 @@ android {
     dependencies {
         debugImplementation(libs.compose.jetpack.tooling)
     }
-}
-
-// TODO is it needed?
-dependencies {
-    implementation(project(mapOf("path" to ":jvm_grpc_client")))
-    implementation(project(mapOf("path" to ":jvm_grpc_client")))
 }
