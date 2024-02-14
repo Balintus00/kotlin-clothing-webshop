@@ -5,7 +5,10 @@ plugins {
 }
 
 application {
-    // mainClass.set(launcherClass) TODO
+    mainClass.set("hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.ApplicationKt")
+
+    val isDevelopment: Boolean = project.ext.has("development")
+    applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
 kotlin {
@@ -13,7 +16,9 @@ kotlin {
 }
 
 dependencies {
+    implementation(libs.graphql.kotlin.ktor.server)
     implementation(libs.kotlin.dl.onnx)
+    implementation(libs.ktor.server.cio.jvm)
     implementation(libs.log4j2.api)
     implementation(libs.log4j2.core)
     implementation(libs.log4j2.slfj.impl)
