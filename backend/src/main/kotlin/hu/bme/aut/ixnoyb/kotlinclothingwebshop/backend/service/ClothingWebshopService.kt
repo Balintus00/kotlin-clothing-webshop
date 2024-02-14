@@ -4,6 +4,7 @@ import org.jetbrains.kotlinx.dl.onnx.inference.OnnxInferenceModel
 import org.jetbrains.kotlinx.dl.onnx.inference.executionproviders.ExecutionProvider
 import org.jetbrains.kotlinx.dl.onnx.inference.inferAndCloseUsing
 import org.slf4j.LoggerFactory
+import java.nio.file.Paths
 
 class ClothingWebshopService {
 
@@ -58,6 +59,9 @@ class ClothingWebshopService {
         @JvmStatic
         private val logger = LoggerFactory.getLogger(ClothingWebshopService::class.java)
 
-        private const val QUERY_MODEL_PATH = "src/main/resources/retrieval_query_tower_model.onnx"
+        private val QUERY_MODEL_PATH = Paths.get(
+            Paths.get("").toAbsolutePath().toString(),
+            "backend/src/main/resources/retrieval_query_tower_model.onnx"
+        ).toString()
     }
 }
