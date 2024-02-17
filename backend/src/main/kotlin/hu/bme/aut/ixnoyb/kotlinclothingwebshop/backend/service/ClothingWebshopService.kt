@@ -1,5 +1,6 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.service
 
+import io.r2dbc.spi.Connection
 import io.r2dbc.spi.ConnectionFactories
 import io.r2dbc.spi.ConnectionFactoryOptions
 import io.r2dbc.spi.ConnectionFactoryOptions.DRIVER
@@ -31,6 +32,7 @@ class ClothingWebshopService {
     )
 
     suspend fun getRecommendedArticleIds(customerId: String): List<String> {
+        var databaseConnection: Connection? = null
         try {
             logger.info("getRecommendedArticleIds called with $customerId")
 
@@ -64,7 +66,9 @@ class ClothingWebshopService {
 
             logger.debug("SQL query to execute:\n$sqlQuery")
 
-            val connection = databaseConnectionFactory.create().awaitFirst()
+            val connection = databaseConnectionFactory.create().awaitFirst().also {
+                databaseConnection = it
+            }
             connection.beginTransaction().awaitFirstOrNull()
             val resultIds = try {
                 val query = connection.createStatement(sqlQuery)
@@ -98,12 +102,16 @@ class ClothingWebshopService {
                 emptyList()
             }
 
+            connection.close()
+            databaseConnection = null
+
             logger.info("Results: $resultIds")
 
             check(resultIds.isNotEmpty())
 
             return resultIds
         } catch (t: Throwable) {
+            databaseConnection?.close()
             logger.error("getRecommendedArticleIds operation failed!", t)
             throw t
         }
