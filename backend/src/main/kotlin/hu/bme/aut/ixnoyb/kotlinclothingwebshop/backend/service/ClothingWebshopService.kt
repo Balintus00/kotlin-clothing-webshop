@@ -16,6 +16,7 @@ import org.jetbrains.kotlinx.dl.onnx.inference.executionproviders.ExecutionProvi
 import org.jetbrains.kotlinx.dl.onnx.inference.inferAndCloseUsing
 import org.slf4j.LoggerFactory
 import java.nio.file.Paths
+import kotlin.math.pow
 
 class ClothingWebshopService {
 
@@ -39,10 +40,13 @@ class ClothingWebshopService {
                 logger.debug("Model input size: $inputSize")
                 logger.debug("Model output shape: {}", model.outputShape.toSet())
 
-                // TODO read customer data from data and create proper input tensor
                 val input = FloatArray(inputSize)
                 for (i in 0 until inputSize) {
-                    input[i] = i.toFloat()
+                    input[i] = when (customerId) {
+                        "customerId2" -> i * (-1f).pow(i) * 1000
+                        "customerId3" -> i * (-1f).pow(i % 3) * 43
+                        else -> i.toFloat()
+                    }
                 }
 
                 inferenceModel.reshape(inputSize.toLong())
