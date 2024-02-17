@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     application
+    alias(libs.plugins.ksp)
 }
 
 application {
@@ -17,9 +18,12 @@ kotlin {
 
 dependencies {
     implementation(libs.graphql.kotlin.ktor.server)
+    implementation(libs.komapper.dialect.postgresql.r2dbc)
+    implementation(libs.komapper.r2dbc)
     implementation(libs.kotlin.dl.onnx)
     implementation(libs.ktor.server.cio.jvm)
     implementation(libs.log4j2.api)
     implementation(libs.log4j2.core)
     implementation(libs.log4j2.slfj.impl)
+    ksp(libs.komapper.processor)
 }

@@ -1,5 +1,16 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.service
 
+import io.r2dbc.spi.ConnectionFactories
+import io.r2dbc.spi.ConnectionFactoryOptions
+import io.r2dbc.spi.ConnectionFactoryOptions.DRIVER
+import io.r2dbc.spi.ConnectionFactoryOptions.HOST
+import io.r2dbc.spi.ConnectionFactoryOptions.PASSWORD
+import io.r2dbc.spi.ConnectionFactoryOptions.PORT
+import io.r2dbc.spi.ConnectionFactoryOptions.USER
+import kotlinx.coroutines.flow.fold
+import kotlinx.coroutines.reactive.asFlow
+import kotlinx.coroutines.reactive.awaitFirst
+import kotlinx.coroutines.reactive.awaitFirstOrNull
 import org.jetbrains.kotlinx.dl.onnx.inference.OnnxInferenceModel
 import org.jetbrains.kotlinx.dl.onnx.inference.executionproviders.ExecutionProvider
 import org.jetbrains.kotlinx.dl.onnx.inference.inferAndCloseUsing
@@ -7,6 +18,16 @@ import org.slf4j.LoggerFactory
 import java.nio.file.Paths
 
 class ClothingWebshopService {
+
+    private val databaseConnectionFactory = ConnectionFactories.get(
+        ConnectionFactoryOptions.builder()
+            .option(DRIVER, "postgresql")
+            .option(HOST, "localhost")
+            .option(PORT, 5432)
+            .option(USER, "postgres")
+            .option(PASSWORD, "password")
+            .build()
+    )
 
     suspend fun getRecommendedArticleIds(customerId: String): List<String> {
         try {
@@ -39,16 +60,45 @@ class ClothingWebshopService {
 
             logger.debug("SQL query to execute:\n$sqlQuery")
 
-//            val recommendedArticleIds = sqlClient
-//                .query(sqlQuery)
-//                .execute()
-//                .await()
+            val connection = databaseConnectionFactory.create().awaitFirst()
+            connection.beginTransaction().awaitFirstOrNull()
+            val resultIds = try {
+                val query = connection.createStatement(sqlQuery)
+                val invalidIdValue = "-1"
+                val results = query.add().execute().awaitFirstOrNull()?.map { row, metadata ->
+                    try {
+                        row.get("articles_id")?.toString() ?: invalidIdValue
+                    } catch (t: Throwable) {
+                        logger.error(
+                            "Failed to retrieve ID from result with metadata: $metadata"
+                        )
+                        invalidIdValue
+                    }
+                }?.asFlow()?.fold(mutableListOf<String>()) { acc, value ->
+                    acc.apply {
+                        if (value != invalidIdValue) {
+                            acc.add(value)
+                        }
+                    }
+                } ?: run {
+                    logger.error("Query result object is null!")
+                    emptyList()
+                }
+                connection.commitTransaction().awaitFirstOrNull()
+                results
+            } catch (t: Throwable) {
+                logger.error(
+                    "Database transaction failed:\n${t.message ?: ""}\n${t.stackTraceToString()}"
+                )
+                connection.rollbackTransaction().awaitFirstOrNull()
+                emptyList()
+            }
 
-            //val result = recommendedArticleIds.map { "${it.getInteger("articles_id")}" }
-            val result = listOf("1", "2", "3")
-            logger.info("ANN search result: $result")
+            logger.info("Results: $resultIds")
 
-            return result
+            check(resultIds.isNotEmpty())
+
+            return resultIds
         } catch (t: Throwable) {
             logger.error("getRecommendedArticleIds operation failed!", t)
             throw t
