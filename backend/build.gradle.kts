@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     application
     alias(libs.plugins.ksp)
+    alias(libs.plugins.ktor)
 }
 
 application {

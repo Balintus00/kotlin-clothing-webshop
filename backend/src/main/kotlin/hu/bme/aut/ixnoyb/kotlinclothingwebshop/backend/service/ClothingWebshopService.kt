@@ -24,7 +24,7 @@ class ClothingWebshopService {
     private val databaseConnectionFactory = ConnectionFactories.get(
         ConnectionFactoryOptions.builder()
             .option(DRIVER, "postgresql")
-            .option(HOST, "localhost")
+            .option(HOST, System.getenv(ENV_KEY_DATABASE_HOST_NAME) ?: "localhost")
             .option(PORT, 5432)
             .option(USER, "postgres")
             .option(PASSWORD, "password")
@@ -36,7 +36,11 @@ class ClothingWebshopService {
         try {
             logger.info("getRecommendedArticleIds called with $customerId")
 
-            val model = OnnxInferenceModel.load(QUERY_MODEL_PATH)
+            val model = OnnxInferenceModel.load(
+                javaClass.getResourceAsStream(
+                    "/retrieval_query_tower_model.onnx"
+                )!!.readAllBytes()
+            )
             val queryVector = model.inferAndCloseUsing(ExecutionProvider.CPU()) { inferenceModel ->
                 val inputSize = model.inputDimensions.last().toInt()
                 logger.debug("Model input size: $inputSize")
@@ -118,12 +122,9 @@ class ClothingWebshopService {
     }
 
     companion object {
+        private const val ENV_KEY_DATABASE_HOST_NAME = "DATABASE_HOST_NAME"
+
         @JvmStatic
         private val logger = LoggerFactory.getLogger(ClothingWebshopService::class.java)
-
-        private val QUERY_MODEL_PATH = Paths.get(
-            Paths.get("").toAbsolutePath().toString(),
-            "backend/src/main/resources/retrieval_query_tower_model.onnx"
-        ).toString()
     }
 }
