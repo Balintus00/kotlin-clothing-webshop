@@ -1,0 +1,5 @@
+query GetRecommendedArticles($customerId: String!) {
+    getRecommendedArticles(customerId: $customerId) {
+        id
+    }
+}
