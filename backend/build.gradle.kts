@@ -23,6 +23,7 @@ dependencies {
     implementation(libs.komapper.r2dbc)
     implementation(libs.kotlin.dl.onnx)
     implementation(libs.ktor.server.cio.jvm)
+    implementation(libs.ktor.server.cors)
     implementation(libs.log4j2.api)
     implementation(libs.log4j2.core)
     implementation(libs.log4j2.slfj.impl)
