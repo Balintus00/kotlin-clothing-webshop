@@ -1,5 +1,3 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.network
 
-internal actual suspend fun getRecommendedArticleIds(customerId: String): List<String> {
-    return listOf("1")
-}
+internal actual fun getServerDomain(): String = "10.0.2.2"

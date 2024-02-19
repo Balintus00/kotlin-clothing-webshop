@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.apollo.kotlin)
     alias(libs.plugins.compose.multiplatform)
 }
 
@@ -28,6 +29,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation(libs.apollo.kotlin.runtime)
                 implementation(compose.material3)
                 implementation(compose.runtime)
                 implementation(compose.ui)
@@ -61,5 +63,16 @@ android {
 
     dependencies {
         debugImplementation(libs.compose.jetpack.tooling)
+    }
+}
+
+apollo {
+    service("kotlinClothingWebshop") {
+        packageName.set("hu.bme.aut.ixnoyb.kotlinclothingwebshop")
+
+        introspection {
+            endpointUrl.set("http://localhost:5400/graphql")
+            schemaFile.set(file("src/commonMain/graphql/hu/bme/aut/ixnoyb/kotlinclothingwebshop/client/schema.graphqls"))
+        }
     }
 }
