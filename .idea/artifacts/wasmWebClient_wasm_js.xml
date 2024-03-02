@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="wasmWebClient-wasm-js">
+    <output-path>$PROJECT_DIR$/wasmWebClient/build/libs</output-path>
+    <root id="archive" name="wasmWebClient-wasm-js.jar">
+      <element id="module-output" name="KotlinClothingWebshop.wasmWebClient.wasmJsMain" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,46 @@
+[versions]
+android-sdk-compile = "34"
+android-sdk-min = "21"
+androidx-activity = "1.8.2"
+androidx-core = "1.12.0"
+apollo-kotlin = "4.0.0-beta.4"
+compose-jetpack = "1.5.8"
+compose-multipatform = "1.6.0"
+gradle-plugin = "8.2.0"
+graphql-kotlin = "7.0.2"
+java = "17"
+komapper = "1.16.1"
+kotlin = "1.9.22"
+kotlin-clothing-webshop = "0.1.0"
+kotlin-dl = "0.5.2"
+ksp = "1.9.22-1.0.17"
+ktor = "2.3.8"
+log4j2 = "2.21.1"
+
+[libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
+apollo-kotlin-runtime = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollo-kotlin" }
+compose-jetpack-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-jetpack" }
+compose-jetpack-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-jetpack" }
+graphql-kotlin-ktor-server = { module = "com.expediagroup:graphql-kotlin-ktor-server", version.ref = "graphql-kotlin" }
+komapper-dialect-postgresql-r2dbc = { module = "org.komapper:komapper-dialect-postgresql-r2dbc", version.ref = "komapper" }
+komapper-processor = { module = "org.komapper:komapper-processor", version.ref = "komapper" }
+komapper-r2dbc = { module = "org.komapper:komapper-starter-r2dbc", version.ref = "komapper" }
+kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
+ktor-server-cio-jvm = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor" }
+ktor-server-cors = { module = "io.ktor:ktor-server-cors", version.ref = "ktor" }
+log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2" }
+log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2" }
+log4j2-slfj-impl = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
+android-library = { id = "com.android.library", version.ref = "gradle-plugin" }
+apollo-kotlin = { id = "com.apollographql.apollo3", version.ref = "apollo-kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multipatform" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
