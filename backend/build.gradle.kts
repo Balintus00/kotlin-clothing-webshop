@@ -29,3 +29,13 @@ dependencies {
     implementation(libs.log4j2.slfj.impl)
     ksp(libs.komapper.processor)
 }
+
+tasks.register<Copy>("copySettingsGradle") {
+    from("../settings.gradle.kts")
+    into("rootProject")
+}
+
+tasks.register<Copy>("copyVersionCatalog") {
+    from("../gradle/libs.versions.toml")
+    into("rootProject/gradle")
+}
