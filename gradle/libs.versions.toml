@@ -13,6 +13,7 @@ komapper = "1.16.1"
 kotlin = "1.9.22"
 kotlin-clothing-webshop = "0.1.0"
 kotlin-dl = "0.5.2"
+kotlinx-datetime = "0.6.0-RC.2"
 ksp = "1.9.22-1.0.17"
 ktor = "2.3.8"
 log4j2 = "2.21.1"
@@ -28,6 +29,7 @@ komapper-dialect-postgresql-r2dbc = { module = "org.komapper:komapper-dialect-po
 komapper-processor = { module = "org.komapper:komapper-processor", version.ref = "komapper" }
 komapper-r2dbc = { module = "org.komapper:komapper-starter-r2dbc", version.ref = "komapper" }
 kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 ktor-server-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
 ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor" }
 ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
