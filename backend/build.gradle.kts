@@ -26,7 +26,7 @@ dependencies {
     implementation(libs.ktor.server.cors)
     implementation(libs.log4j2.api)
     implementation(libs.log4j2.core)
-    implementation(libs.log4j2.slfj.impl)
+    implementation(libs.log4j2.slf4j.impl)
     ksp(libs.komapper.processor)
 }
 

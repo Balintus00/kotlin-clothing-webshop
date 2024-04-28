@@ -32,7 +32,7 @@ ktor-server-cio-jvm = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "k
 ktor-server-cors = { module = "io.ktor:ktor-server-cors", version.ref = "ktor" }
 log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2" }
 log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2" }
-log4j2-slfj-impl = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2" }
+log4j2-slf4j-impl = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
