@@ -7,7 +7,7 @@ apollo-kotlin = "4.0.0-beta.4"
 compose-jetpack = "1.5.8"
 compose-multipatform = "1.6.0"
 gradle-plugin = "8.2.0"
-graphql-kotlin = "7.0.2"
+graphql-kotlin = "7.1.1"
 java = "17"
 komapper = "1.16.1"
 kotlin = "1.9.22"
@@ -28,8 +28,11 @@ komapper-dialect-postgresql-r2dbc = { module = "org.komapper:komapper-dialect-po
 komapper-processor = { module = "org.komapper:komapper-processor", version.ref = "komapper" }
 komapper-r2dbc = { module = "org.komapper:komapper-starter-r2dbc", version.ref = "komapper" }
 kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
-ktor-server-cio-jvm = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor" }
-ktor-server-cors = { module = "io.ktor:ktor-server-cors", version.ref = "ktor" }
+ktor-server-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
+ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor" }
+ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
+ktor-server-cors = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
+ktor-kotlinx-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2" }
 log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2" }
 log4j2-slf4j-impl = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2" }
@@ -42,5 +45,6 @@ compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-m
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
