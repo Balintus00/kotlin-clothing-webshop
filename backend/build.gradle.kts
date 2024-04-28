@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     application
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.ktor)
 }
@@ -22,7 +23,10 @@ dependencies {
     implementation(libs.komapper.dialect.postgresql.r2dbc)
     implementation(libs.komapper.r2dbc)
     implementation(libs.kotlin.dl.onnx)
-    implementation(libs.ktor.server.cio.jvm)
+    implementation(libs.ktor.kotlinx.serialization.json)
+    implementation(libs.ktor.server.auth)
+    implementation(libs.ktor.server.cio)
+    implementation(libs.ktor.server.contentNegotiation)
     implementation(libs.ktor.server.cors)
     implementation(libs.log4j2.api)
     implementation(libs.log4j2.core)
