@@ -97,7 +97,7 @@ value class Password(val value: String) {
 
     companion object {
         private const val MINIMUM_LENGTH = 12
-        private const val MAXIMUM_LENGTH = 125
+        private const val MAXIMUM_LENGTH = 127
 
         const val INVALID_LENGTH_ERROR_MESSAGE = "Password length is invalid!"
     }
