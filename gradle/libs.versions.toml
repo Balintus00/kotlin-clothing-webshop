@@ -29,6 +29,7 @@ komapper-dialect-postgresql-r2dbc = { module = "org.komapper:komapper-dialect-po
 komapper-processor = { module = "org.komapper:komapper-processor", version.ref = "komapper" }
 komapper-r2dbc = { module = "org.komapper:komapper-starter-r2dbc", version.ref = "komapper" }
 kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 ktor-server-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
 ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor" }
