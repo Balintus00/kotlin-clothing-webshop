@@ -10,6 +10,7 @@ gradle-plugin = "8.2.0"
 graphql-kotlin = "7.1.1"
 java = "17"
 kermit = "2.0.3"
+koin = "3.6.0-alpha3"
 komapper = "1.16.1"
 kotlin = "1.9.22"
 kotlin-clothing-webshop = "0.1.0"
@@ -26,6 +27,9 @@ compose-jetpack-preview = { module = "androidx.compose.ui:ui-tooling-preview", v
 compose-jetpack-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-jetpack" }
 graphql-kotlin-ktor-server = { module = "com.expediagroup:graphql-kotlin-ktor-server", version.ref = "graphql-kotlin" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+kermit-koin = { module = "co.touchlab:kermit-koin", version.ref = "kermit" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
 komapper-dialect-postgresql-r2dbc = { module = "org.komapper:komapper-dialect-postgresql-r2dbc", version.ref = "komapper" }
 komapper-processor = { module = "org.komapper:komapper-processor", version.ref = "komapper" }
 komapper-r2dbc = { module = "org.komapper:komapper-starter-r2dbc", version.ref = "komapper" }
