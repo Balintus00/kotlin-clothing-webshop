@@ -82,6 +82,14 @@ value class Email(val value: String) {
             "Email address must contain exactly 1 @ character!"
         const val INVALID_LOCAL_PART_LENGTH_ERROR_MESSAGE = "Invalid local part length!"
         const val INVALID_DOMAIN_PART_CHARACTER_ERROR_MESSAGE = "Invalid email address!"
+
+        val errorMessages = setOf(
+            INVALID_LENGTH_ERROR_MESSAGE,
+            CONTAINS_PROHIBITED_CHARACTER_ERROR_MESSAGE,
+            INVALID_SEPARATOR_COUNT_ERROR_MESSAGE,
+            INVALID_LOCAL_PART_LENGTH_ERROR_MESSAGE,
+            INVALID_DOMAIN_PART_CHARACTER_ERROR_MESSAGE,
+        )
     }
 }
 
