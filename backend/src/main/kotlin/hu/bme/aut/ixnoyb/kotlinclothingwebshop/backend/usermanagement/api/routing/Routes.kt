@@ -8,9 +8,14 @@ import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.api.dto.Up
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.api.dto.toDto
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.domain.UpdatableUserCandidate
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.domain.UserService
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.DateOfBirth
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.Email
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.FirstName
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.LastName
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.Password
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.UserID
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.Username
+import io.ktor.http.HttpStatusCode.Companion.BadRequest
 import io.ktor.http.HttpStatusCode.Companion.InternalServerError
 import io.ktor.http.HttpStatusCode.Companion.OK
 import io.ktor.serialization.kotlinx.json.json
@@ -47,28 +52,65 @@ internal fun Route.userManagementRoutes(): List<Route> {
     return listOf(
         route(PATH_SEGMENT_USER + PATH_SEGMENT_LOGIN) {
             post {
+                var credentials: LoginCredentials? = null
                 try {
-                    val credentials = call.receive<LoginCredentials>()
+                    credentials = call.receive<LoginCredentials>()
 
                     call.respond(
                         JwtResponse(
                             service.login(Email(credentials.email), Password(credentials.password)).toString()
                         )
                     )
-                } catch (t: Throwable) {
+                } catch (e: IllegalArgumentException) {
+                    if (
+                        e.message in setOf(*Email.errorMessages.toTypedArray(), Password.INVALID_LENGTH_ERROR_MESSAGE)
+                    ) {
+                        logger.warn(
+                            "Invalid credential input for ${credentials?.email} ${credentials?.password}: ${e.message}"
+                        )
 
+                        call.respond(BadRequest, e.message!!)
+                    } else {
+                        call.respondWithDefaultError(logger, e.message)
+                    }
+                } catch (t: Throwable) {
                     call.respondWithDefaultError(logger, t.message)
                 }
             }
         },
         route(PATH_SEGMENT_USER + PATH_SEGMENT_REGISTER) {
             post {
+                var userInput: AuthenticatedUser? = null
+
                 try {
+                    userInput = call.receive<AuthenticatedUser>()
                     call.respond(
                         JwtResponse(
-                            service.register(call.receive<AuthenticatedUser>().toDomainModel()).toString()
+                            service.register(userInput.toDomainModel()).toString()
                         )
                     )
+                } catch (e: IllegalArgumentException) {
+                    if (
+                        e.message in setOf(
+                            Username.INVALID_LENGTH_ERROR_MESSAGE,
+                            Username.INVALID_CHARACTER_ERROR_MESSAGE,
+                            *Email.errorMessages.toTypedArray(),
+                            Password.INVALID_LENGTH_ERROR_MESSAGE,
+                            FirstName.INVALID_LENGTH_ERROR_MESSAGE,
+                            FirstName.INVALID_CHARACTER_ERROR_MESSAGE,
+                            LastName.INVALID_LENGTH_ERROR_MESSAGE,
+                            LastName.INVALID_CHARACTER_ERROR_MESSAGE,
+                            DateOfBirth.INVALID_DATE_ERROR_MESSAGE,
+                        )
+                    ) {
+                        logger.warn(
+                            "Invalid user registration input for ${userInput}: ${e.message}"
+                        )
+
+                        call.respond(BadRequest, e.message!!)
+                    } else {
+                        call.respondWithDefaultError(logger, e.message)
+                    }
                 } catch (t: Throwable) {
                     call.respondWithDefaultError(logger, t.message)
                 }
@@ -81,7 +123,6 @@ internal fun Route.userManagementRoutes(): List<Route> {
                         service.logout(call.principal<JWTPrincipal>()!!.jwtId!!)
 
                         call.respond(OK)
-
                     } catch (t: Throwable) {
                         call.respondWithDefaultError(logger, t.message)
                     }
@@ -99,14 +140,16 @@ internal fun Route.userManagementRoutes(): List<Route> {
                                 ),
                             ).toDto(),
                         )
-                    } catch (t: Throwable) {
+                    }  catch (t: Throwable) {
                         call.respondWithDefaultError(logger, t.message)
                     }
                 }
 
                 put {
+                    var updatableUserCandidate: UpdatedUserCandidate? = null
+
                     try {
-                        val updatableUserCandidate = call.receive<UpdatedUserCandidate>()
+                        updatableUserCandidate = call.receive<UpdatedUserCandidate>()
 
                         call.respond(
                             status = OK,
@@ -120,6 +163,26 @@ internal fun Route.userManagementRoutes(): List<Route> {
                                 )
                             ).toDto(),
                         )
+                    } catch (e: IllegalArgumentException) {
+                        if (
+                            e.message in setOf(
+                                Username.INVALID_LENGTH_ERROR_MESSAGE,
+                                Username.INVALID_CHARACTER_ERROR_MESSAGE,
+                                *Email.errorMessages.toTypedArray(),
+                                Password.INVALID_LENGTH_ERROR_MESSAGE,
+                                FirstName.INVALID_LENGTH_ERROR_MESSAGE,
+                                FirstName.INVALID_CHARACTER_ERROR_MESSAGE,
+                                LastName.INVALID_LENGTH_ERROR_MESSAGE,
+                                LastName.INVALID_CHARACTER_ERROR_MESSAGE,
+                                DateOfBirth.INVALID_DATE_ERROR_MESSAGE,
+                            )
+                        ) {
+                            logger.warn(
+                                "Invalid user update input for ${updatableUserCandidate}: ${e.message}"
+                            )
+
+                            call.respond(BadRequest, e.message!!)
+                        }
                     } catch (t: Throwable) {
                         call.respondWithDefaultError(logger, t.message)
                     }
