@@ -19,6 +19,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(projects.domain)
     implementation(libs.graphql.kotlin.ktor.server)
     implementation(libs.komapper.dialect.postgresql.r2dbc)
     implementation(libs.komapper.r2dbc)
@@ -28,10 +29,13 @@ dependencies {
     implementation(libs.ktor.server.cio)
     implementation(libs.ktor.server.contentNegotiation)
     implementation(libs.ktor.server.cors)
-    implementation(libs.log4j2.api)
-    implementation(libs.log4j2.core)
-    implementation(libs.log4j2.slf4j.impl)
+
     ksp(libs.komapper.processor)
+}
+
+tasks.register<Copy>("copyProjectBuildGradle") {
+    from("../build.gradle.kts")
+    into("rootProject")
 }
 
 tasks.register<Copy>("copySettingsGradle") {
@@ -42,4 +46,14 @@ tasks.register<Copy>("copySettingsGradle") {
 tasks.register<Copy>("copyVersionCatalog") {
     from("../gradle/libs.versions.toml")
     into("rootProject/gradle")
+}
+
+tasks.register<Copy>("copyDomainBuildGradle") {
+    from("../domain/build.gradle.kts")
+    into("rootProject/domain")
+}
+
+tasks.register<Copy>("copyDomainSrc") {
+    from("../domain/src")
+    into("rootProject/domain/src")
 }

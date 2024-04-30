@@ -44,14 +44,13 @@ And the following release (1.1.0) will contain:
 
 #### Requirements to run the backend
 
-The easiest way to run the backend is run it with [Docker Compose](https://www.docker.com/) using the project's
-[docker-compose.yaml](docker-compose.yaml) file.
+The backend requires [JDK 17]() and [Docker]() to be installed.
 
 #### Requirements to run the Android, JVM Desktop application
 
-Both the Android and JVM application requires
-[JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) to be installed. To build and
-install the Android application it is also recommended to
+Both the Android and JVM application
+requires [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) to be installed. To
+build and install the Android application it is also recommended to
 install [Android Studio](https://developer.android.com/studio).
 
 #### Requirements to run the Web application
@@ -84,16 +83,13 @@ mobile applications when the simulator and emulator is running on the same host.
 
 #### 1. Backend
 
-Firstly, you must ensure that are project level files are copied to appropriate places into the backend module. The
-recommended to do this, is to run a simple script
-file ([Windows](backend/copy_required_content_from_root_project_for_docker.cmd),
-[macOS](backend/copy_required_content_from_root_project_for_docker.sh)). After this, you can use the
-[Docker plugin for JetBrains IDEs](https://plugins.jetbrains.com/plugin/7724-docker), or the command below with the
-project's [docker-compose.yaml](docker-compose.yaml) file:
-
-```
-docker compose up -d
-```
+The recommended way to run the backend is to use
+the [Forced build: docker-compose.yaml](.idea/runConfigurations/Forced_build__docker_compose_yaml__Compose_Deployment.xml)
+custom configuration in IntelliJ IDEA or Android Studio. This configuration always rebuilds the backend, and also
+runs necessary preprocessing gradle tasks (e.g. copying source code into the *rootProject* folder to make it accessible
+from Docker build context). If you don't want to rebuild the backend (if not necessary),
+use [Build: docker-compose.yaml](.idea/runConfigurations/Build__docker_compose_yaml__Compose_Deployment.xml)
+configuration.
 
 The backend will be available on http://localhost:5400 and the PostgreSQL database on http://localhost:5432.
 
@@ -105,19 +101,16 @@ the task, make sure that the backend is running.
 
 - Android application
     - The easiest way to run the **android** configuration in Android Studio. But you can also use gradle tasks from IDE
-      or
-      using the [gradlew](gradle/wrapper) to generate an apk:
+      or using the [gradlew](gradle/wrapper) to generate an apk:
 
       ```
       ./gradlew android:assemble
       ```
 
       The apk will be generated in *android/build/outputs/apk/*, and in that folder for each build type (currently debug
-      and
-      release is defined) there will be a folder that will contain the apk built with the related build type. And then
-      this
-      apk can be installed onto the running emulator using [adb](https://developer.android.com/tools/adb)
-      with following command:
+      and release is defined) there will be a folder that will contain the apk built with the related build type. And
+      then this apk can be installed onto the running emulator using [adb](https://developer.android.com/tools/adb) with
+      following command:
 
       ```
       adb install android-debug.apk
