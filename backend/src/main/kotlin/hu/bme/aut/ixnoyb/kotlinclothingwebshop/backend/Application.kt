@@ -44,6 +44,8 @@ private fun Application.module() {
 private fun Application.configureDI() {
     install(Koin) {
         logger(KermitKoinLogger(Logger.withTag("koin")))
+
+        modules(userManagementModule)
     }
 }
 
