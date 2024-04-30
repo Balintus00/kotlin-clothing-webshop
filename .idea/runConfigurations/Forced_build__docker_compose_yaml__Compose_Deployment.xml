@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Forced build: docker-compose.yaml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+    <deployment type="docker-compose.yml">
+      <settings>
+        <option name="envFilePath" value="" />
+        <option name="commandLineOptions" value="--build" />
+        <option name="sourceFilePath" value="docker-compose.yaml" />
+      </settings>
+    </deployment>
+    <method v="2">
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="copySettingsGradle" externalProjectPath="$PROJECT_DIR$/backend" vmOptions="" scriptParameters="" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="copyVersionCatalog" externalProjectPath="$PROJECT_DIR$/backend" vmOptions="" scriptParameters="" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="copyDomainBuildGradle" externalProjectPath="$PROJECT_DIR$/backend" vmOptions="" scriptParameters="" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="copyDomainSrc" externalProjectPath="$PROJECT_DIR$/backend" vmOptions="" scriptParameters="" />
+      <option name="Gradle.BeforeRunTask" enabled="true" tasks="copyProjectBuildGradle" externalProjectPath="$PROJECT_DIR$/backend" vmOptions="" scriptParameters="" />
+    </method>
+  </configuration>
+</component>
