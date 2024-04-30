@@ -1,11 +1,14 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend
 
+import co.touchlab.kermit.Logger
+import co.touchlab.kermit.koin.KermitKoinLogger
 import com.expediagroup.graphql.server.ktor.GraphQL
 import com.expediagroup.graphql.server.ktor.graphQLGetRoute
 import com.expediagroup.graphql.server.ktor.graphQLPostRoute
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.graphql.query.RecommendedArticlesQuery
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.graphql.schema.KotlinClothingWebshopSchema
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.api.routing.userManagementRoutes
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.di.userManagementModule
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod
 import io.ktor.server.application.Application
@@ -17,6 +20,7 @@ import io.ktor.server.cio.CIO
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.plugins.cors.routing.CORS
 import io.ktor.server.routing.routing
+import org.koin.ktor.plugin.Koin
 
 internal const val AUTHENTICATION_PROVIDER_NAME = "auth-bearer"
 
@@ -30,10 +34,17 @@ fun main() {
 }
 
 private fun Application.module() {
+    configureDI()
     configureAuthentication()
     configureCORS()
     configureGraphQLPlugin()
     configureRouting()
+}
+
+private fun Application.configureDI() {
+    install(Koin) {
+        logger(KermitKoinLogger(Logger.withTag("koin")))
+    }
 }
 
 private fun Application.configureAuthentication() {
