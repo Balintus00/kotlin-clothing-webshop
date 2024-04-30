@@ -21,6 +21,7 @@ kotlin {
 dependencies {
     implementation(projects.domain)
     implementation(libs.graphql.kotlin.ktor.server)
+    implementation(libs.kermit)
     implementation(libs.komapper.dialect.postgresql.r2dbc)
     implementation(libs.komapper.r2dbc)
     implementation(libs.kotlin.dl.onnx)

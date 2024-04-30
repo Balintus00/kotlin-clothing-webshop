@@ -9,6 +9,7 @@ compose-multipatform = "1.6.0"
 gradle-plugin = "8.2.0"
 graphql-kotlin = "7.1.1"
 java = "17"
+kermit = "2.0.3"
 komapper = "1.16.1"
 kotlin = "1.9.22"
 kotlin-clothing-webshop = "0.1.0"
@@ -16,7 +17,6 @@ kotlin-dl = "0.5.2"
 kotlinx-datetime = "0.6.0-RC.2"
 ksp = "1.9.22-1.0.17"
 ktor = "2.3.8"
-log4j2 = "2.21.1"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
@@ -25,6 +25,7 @@ apollo-kotlin-runtime = { module = "com.apollographql.apollo3:apollo-runtime", v
 compose-jetpack-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-jetpack" }
 compose-jetpack-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-jetpack" }
 graphql-kotlin-ktor-server = { module = "com.expediagroup:graphql-kotlin-ktor-server", version.ref = "graphql-kotlin" }
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 komapper-dialect-postgresql-r2dbc = { module = "org.komapper:komapper-dialect-postgresql-r2dbc", version.ref = "komapper" }
 komapper-processor = { module = "org.komapper:komapper-processor", version.ref = "komapper" }
 komapper-r2dbc = { module = "org.komapper:komapper-starter-r2dbc", version.ref = "komapper" }
@@ -36,9 +37,6 @@ ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor"
 ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
 ktor-server-cors = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
 ktor-kotlinx-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
-log4j2-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j2" }
-log4j2-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j2" }
-log4j2-slf4j-impl = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "log4j2" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
