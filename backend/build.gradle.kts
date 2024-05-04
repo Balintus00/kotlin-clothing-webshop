@@ -22,12 +22,13 @@ dependencies {
     implementation(projects.domain)
 
     implementation(libs.graphql.kotlin.ktor.server)
+    implementation(libs.jclOverSlf4j)
     implementation(libs.kermit)
     implementation(libs.kermit.koin)
     implementation(libs.koin.core)
     implementation(libs.koin.ktor)
     implementation(libs.komapper.dialect.postgresql.r2dbc)
-    implementation(libs.komapper.r2dbc)
+    implementation(libs.komapper.starter.r2dbc)
     implementation(libs.kotlin.dl.onnx)
     implementation(libs.ktor.kotlinx.serialization.json)
     implementation(libs.ktor.server.auth)
@@ -35,6 +36,9 @@ dependencies {
     implementation(libs.ktor.server.cio)
     implementation(libs.ktor.server.contentNegotiation)
     implementation(libs.ktor.server.cors)
+    implementation(libs.spring.security.crypto)
+
+    runtimeOnly(libs.komapper.slf4j)
 
     ksp(libs.komapper.processor)
 }

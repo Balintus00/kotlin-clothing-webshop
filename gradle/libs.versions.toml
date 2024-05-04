@@ -11,13 +11,15 @@ graphql-kotlin = "7.1.1"
 java = "17"
 kermit = "2.0.3"
 koin = "3.6.0-alpha3"
-komapper = "1.16.1"
+komapper = "1.17.1"
 kotlin = "1.9.22"
-kotlin-clothing-webshop = "0.1.0"
+kotlinClothingWebshop = "1.0.0"
 kotlin-dl = "0.5.2"
 kotlinx-datetime = "0.6.0-RC.2"
 ksp = "1.9.22-1.0.17"
-ktor = "2.3.8"
+ktor = "2.3.10"
+slf4j = "2.0.13"
+spring-security = "6.2.4"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
@@ -26,13 +28,15 @@ apollo-kotlin-runtime = { module = "com.apollographql.apollo3:apollo-runtime", v
 compose-jetpack-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-jetpack" }
 compose-jetpack-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-jetpack" }
 graphql-kotlin-ktor-server = { module = "com.expediagroup:graphql-kotlin-ktor-server", version.ref = "graphql-kotlin" }
+jclOverSlf4j = { module = "org.slf4j:jcl-over-slf4j", version.ref = "slf4j" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 kermit-koin = { module = "co.touchlab:kermit-koin", version.ref = "kermit" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
 komapper-dialect-postgresql-r2dbc = { module = "org.komapper:komapper-dialect-postgresql-r2dbc", version.ref = "komapper" }
 komapper-processor = { module = "org.komapper:komapper-processor", version.ref = "komapper" }
-komapper-r2dbc = { module = "org.komapper:komapper-starter-r2dbc", version.ref = "komapper" }
+komapper-starter-r2dbc = { module = "org.komapper:komapper-starter-r2dbc", version.ref = "komapper" }
+komapper-slf4j = { module = "org.komapper:komapper-slf4j", version.ref = "komapper" }
 kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
@@ -42,6 +46,7 @@ ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor"
 ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
 ktor-server-cors = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
 ktor-kotlinx-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+spring-security-crypto = { module = "org.springframework.security:spring-security-crypto", version.ref = "spring-security" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }

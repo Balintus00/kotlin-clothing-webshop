@@ -50,8 +50,13 @@ internal data class AuthenticatedUser(
             email = Email(email),
             firstName = FirstName(firstName),
             lastName = LastName(lastName),
-            dateOfBirth = DateOfBirth(LocalDate.parse(dateOfBirth)),
+            dateOfBirth = DateOfBirth(
+                LocalDate.Formats.ISO.parseOrNull(dateOfBirth)
+                    ?: throw IllegalArgumentException(ERROR_MESSAGE_INVALID_DATE_FORMAT)
+            ),
         ),
         password = Password(password),
     )
 }
+
+internal const val ERROR_MESSAGE_INVALID_DATE_FORMAT = "Birth of date must be ISO-8601 date format!"
