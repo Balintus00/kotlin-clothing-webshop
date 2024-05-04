@@ -24,5 +24,5 @@ data class UserCandidate(
 data class UpdatableUserCandidate(
     val id: UserID,
     val currentPassword: Password,
-    val updatedUserCandidate: UserCandidate,
+    val userCandidate: UserCandidate,
 )

@@ -1,46 +1,40 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.service
 
 import io.r2dbc.spi.Connection
-import io.r2dbc.spi.ConnectionFactories
-import io.r2dbc.spi.ConnectionFactoryOptions
-import io.r2dbc.spi.ConnectionFactoryOptions.DRIVER
-import io.r2dbc.spi.ConnectionFactoryOptions.HOST
-import io.r2dbc.spi.ConnectionFactoryOptions.PASSWORD
-import io.r2dbc.spi.ConnectionFactoryOptions.PORT
-import io.r2dbc.spi.ConnectionFactoryOptions.USER
+import io.r2dbc.spi.ConnectionFactory
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.fold
 import kotlinx.coroutines.reactive.asFlow
 import kotlinx.coroutines.reactive.awaitFirst
 import kotlinx.coroutines.reactive.awaitFirstOrNull
+import kotlinx.coroutines.withContext
 import org.jetbrains.kotlinx.dl.onnx.inference.OnnxInferenceModel
 import org.jetbrains.kotlinx.dl.onnx.inference.executionproviders.ExecutionProvider
 import org.jetbrains.kotlinx.dl.onnx.inference.inferAndCloseUsing
 import org.slf4j.LoggerFactory
-import java.nio.file.Paths
 import kotlin.math.pow
 
-class ClothingWebshopService {
+interface ClothingWebshopService {
 
-    private val databaseConnectionFactory = ConnectionFactories.get(
-        ConnectionFactoryOptions.builder()
-            .option(DRIVER, "postgresql")
-            .option(HOST, System.getenv(ENV_KEY_DATABASE_HOST_NAME) ?: "localhost")
-            .option(PORT, 5432)
-            .option(USER, "postgres")
-            .option(PASSWORD, "password")
-            .build()
-    )
+    suspend fun getRecommendedArticleIds(customerId: String): List<String>
 
-    suspend fun getRecommendedArticleIds(customerId: String): List<String> {
+}
+
+class DefaultClothingWebshopService(private val databaseConnectionFactory: ConnectionFactory) : ClothingWebshopService {
+
+    override suspend fun getRecommendedArticleIds(customerId: String): List<String> {
         var databaseConnection: Connection? = null
         try {
             logger.info("getRecommendedArticleIds called with $customerId")
 
             val model = OnnxInferenceModel.load(
-                javaClass.getResourceAsStream(
-                    "/retrieval_query_tower_model.onnx"
-                )!!.readAllBytes()
+                withContext(Dispatchers.IO) {
+                    javaClass.getResourceAsStream(
+                        "/retrieval_query_tower_model.onnx"
+                    )!!.readAllBytes()
+                }
             )
+
             val queryVector = model.inferAndCloseUsing(ExecutionProvider.CPU()) { inferenceModel ->
                 val inputSize = model.inputDimensions.last().toInt()
                 logger.debug("Model input size: $inputSize")
@@ -62,7 +56,7 @@ class ClothingWebshopService {
                 }
             }
 
-            val sqlQuery = """
+            @Suppress("SqlDialectInspection") val sqlQuery = """
                     SELECT articles_id FROM articles 
                     ORDER BY recommendation_embedding <-> '$queryVector' 
                     LIMIT 5;
@@ -122,9 +116,7 @@ class ClothingWebshopService {
     }
 
     companion object {
-        private const val ENV_KEY_DATABASE_HOST_NAME = "DATABASE_HOST_NAME"
-
         @JvmStatic
-        private val logger = LoggerFactory.getLogger(ClothingWebshopService::class.java)
+        private val logger = LoggerFactory.getLogger(ClothingWebshopService::class.simpleName!!)
     }
 }
