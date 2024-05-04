@@ -34,6 +34,8 @@ kotlin {
             }
         }
     }
+
+    jvmToolchain(libs.versions.java.get().toInt())
 }
 
 android {
