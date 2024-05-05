@@ -1,0 +1,7 @@
+<resources>
+    <!-- region Root screen components -->
+    <string name="navigation_bar_clothing_browser_feature_item_label">Clothes</string>
+    <string name="navigation_bar_checkout_feature_item_label">Basket</string>
+    <string name="navigation_bar_user_management_feature_item_label">Profile</string>
+    <!-- endregion -->
+</resources>

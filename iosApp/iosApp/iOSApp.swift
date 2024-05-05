@@ -1,10 +1,19 @@
+import client
 import SwiftUI
 
 @main
 struct iOSApp: App {
-	var body: some Scene {
-		WindowGroup {
-			ContentView()
-		}
-	}
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self)
+    var appDelegate: AppDelegate
+    
+    init() {
+        KoinHelperKt.doInitKoin()
+    }
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView(component: appDelegate.component)
+        }
+    }
 }
