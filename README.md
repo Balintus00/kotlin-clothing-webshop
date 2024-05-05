@@ -5,17 +5,23 @@
 
 ## Kotlin Multiplatform Sample Application
 
-Kotlin Clothing Webshop is Kotlin Multiplatform application. My main goal with the project to learn more and
+Kotlin Clothing Webshop is Kotlin Multiplatform application. My main goal with the project to learn
+more and
 show that how Kotlin Multiplatform can be used to create complex applications. The project includes:
 
-- A backend created with [ktor](https://ktor.io/), providing a [GraphQL](https://graphql.org/) API, generating
-  recommendations using [KotlinDL](https://github.com/Kotlin/kotlindl) with an [ONNX model](https://onnx.ai/),
+- A backend created with [ktor](https://ktor.io/), providing a [GraphQL](https://graphql.org/) API,
+  generating
+  recommendations using [KotlinDL](https://github.com/Kotlin/kotlindl) with
+  an [ONNX model](https://onnx.ai/),
   persisting data into a [PostgreSQL](https://www.postgresql.org/) database using
   [R2DBC API](https://github.com/r2dbc/r2dbc-spi), with asynchronous code implemented with
-  [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html). The backend and the database
+  [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html). The backend and the
+  database
   management system it uses can be run with [Docker compose](https://www.docker.com/).
-- A [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html) client with common
-  [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) user interface, and GraphQL communication
+- A [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)
+  client with common
+  [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/) user interface, and
+  GraphQL communication
   implemented with [Apollo Kotlin](https://github.com/apollographql/apollo-kotlin) library.
 - An exploratory data analysis
   [Kotlin Notebook](https://blog.jetbrains.com/kotlin/2023/07/introducing-kotlin-notebook/).
@@ -24,7 +30,8 @@ show that how Kotlin Multiplatform can be used to create complex applications. T
 
 ### Current project status
 
-Currently, the repository contains an implementation of the proof of concept demo version of the webshop application.
+Currently, the repository contains an implementation of the proof of concept demo version of the
+webshop application.
 
 ![Demo application user interface](screenshots/demo_application_ui.jpg)
 
@@ -49,14 +56,16 @@ The backend requires [JDK 17]() and [Docker]() to be installed.
 #### Requirements to run the Android, JVM Desktop application
 
 Both the Android and JVM application
-requires [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) to be installed. To
+requires [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) to
+be installed. To
 build and install the Android application it is also recommended to
 install [Android Studio](https://developer.android.com/studio).
 
 #### Requirements to run the Web application
 
 To run the web application, you need to have a browser installed with
-[WebAssembly Garbage Collection Support (WasmGC)](https://github.com/WebAssembly/gc). Please refer to the [related
+[WebAssembly Garbage Collection Support (WasmGC)](https://github.com/WebAssembly/gc). Please refer
+to the [related
 official site](https://webassembly.org/features/) for more information about supported browsers.
 
 #### Requirements to run the iOS application
@@ -72,44 +81,56 @@ and [Jupyter](https://plugins.jetbrains.com/plugin/22814-jupyter) IntelliJ IDEA 
 
 #### Requirements to run the IPython Notebook
 
-Install Python, and the dependencies declared in [requirements.txt](notebooks/requirements.txt), and a IPython (Jupyter)
+Install Python, and the dependencies declared in [requirements.txt](notebooks/requirements.txt), and
+a IPython (Jupyter)
 Notebook editor software, e.g. [PyCharm](https://www.jetbrains.com/pycharm/).
 
 ### Usage
 
-This section provides instructions on how to use the project, including commands to create artifacts or run it. The only
-supported setup of the system is when the backend and the client application is running on the same host, or in the case
+This section provides instructions on how to use the project, including commands to create artifacts
+or run it. The only
+supported setup of the system is when the backend and the client application is running on the same
+host, or in the case
 mobile applications when the simulator and emulator is running on the same host.
 
 #### 1. Backend
 
 The recommended way to run the backend is to use
 the [Forced build: docker-compose.yaml](.idea/runConfigurations/Forced_build__docker_compose_yaml__Compose_Deployment.xml)
-custom configuration in IntelliJ IDEA or Android Studio. This configuration always rebuilds the backend, and also
-runs necessary preprocessing gradle tasks (e.g. copying source code into the *rootProject* folder to make it accessible
+custom configuration in IntelliJ IDEA or Android Studio. This configuration always rebuilds the
+backend, and also
+runs necessary preprocessing gradle tasks (e.g. copying source code into the *rootProject* folder to
+make it accessible
 from Docker build context). If you don't want to rebuild the backend (if not necessary),
 use [Build: docker-compose.yaml](.idea/runConfigurations/Build__docker_compose_yaml__Compose_Deployment.xml)
 configuration.
 
-The backend will be available on http://localhost:5400 and the PostgreSQL database on http://localhost:5432.
+The backend will be available on http://localhost:5400 and the PostgreSQL database
+on http://localhost:5432.
 
 #### 2. Clients (Android, JVM Desktop, iOS, Web application)
 
-Before the client applications could be built, the GraphQL schema must be downloaded to the required place. The easiest
-way to do this, is to run the *downloadKotlinClothingWebshopApolloSchemaFromIntrospection* gradle task. Before running
+Before the client applications could be built, the GraphQL schema must be downloaded to the required
+place. The easiest
+way to do this, is to run the *downloadKotlinClothingWebshopApolloSchemaFromIntrospection* gradle
+task. Before running
 the task, make sure that the backend is running.
 
 - Android application
-    - The easiest way to run the **android** configuration in Android Studio. But you can also use gradle tasks from IDE
+    - The easiest way to run the **android** configuration in Android Studio. But you can also use
+      gradle tasks from IDE
       or using the [gradlew](gradle/wrapper) to generate an apk:
 
       ```
       ./gradlew android:assemble
       ```
 
-      The apk will be generated in *android/build/outputs/apk/*, and in that folder for each build type (currently debug
-      and release is defined) there will be a folder that will contain the apk built with the related build type. And
-      then this apk can be installed onto the running emulator using [adb](https://developer.android.com/tools/adb) with
+      The apk will be generated in *android/build/outputs/apk/*, and in that folder for each build
+      type (currently debug
+      and release is defined) there will be a folder that will contain the apk built with the
+      related build type. And
+      then this apk can be installed onto the running emulator
+      using [adb](https://developer.android.com/tools/adb) with
       following command:
 
       ```
@@ -128,14 +149,23 @@ Open the [notebook](notebooks/hm_dataset_inspection_eda.ipynb) in IntelliJ IDEA.
 
 #### 4. Model experimentation IPython Notebook
 
-Open your [notebook](notebooks/two_tower_model_clothing_recommendation_system.ipynb) with your preferred Jupyter
+Open your [notebook](notebooks/two_tower_model_clothing_recommendation_system.ipynb) with your
+preferred Jupyter
 Notebook editor tool.
 
 ### Versioning
 
 This project follows the principles of [Semantic Versioning (SemVer)](https://semver.org/).
 
+### Acknowledgement
+
+- The T-Shirt logo in the application's icon is
+  from [svgrepo](https://www.svgrepo.com/svg/274466/shirt)
+- The application icon resources were generated using [IconKitchen](https://icon.kitchen/)
+
 ### Contributing
 
-Thank you for your interest in contributing to this project! At the moment, the repository is not open to external
-contributions. However, this may change in the future as the project evolves. Stay tuned for updates!
+Thank you for your interest in contributing to this project! At the moment, the repository is not
+open to external
+contributions. However, this may change in the future as the project evolves. Stay tuned for
+updates!
