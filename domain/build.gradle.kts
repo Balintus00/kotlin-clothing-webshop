@@ -36,6 +36,8 @@ kotlin {
     }
 
     jvmToolchain(libs.versions.java.get().toInt())
+
+    task("testClasses") // TODO https://youtrack.jetbrains.com/issue/IDEA-348814/Android-Studio-Iguana-breaks-KMP-compilation
 }
 
 android {

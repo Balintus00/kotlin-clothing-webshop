@@ -1,34 +1,54 @@
 [versions]
 android-sdk-compile = "34"
 android-sdk-min = "21"
-androidx-activity = "1.8.2"
+androidx-activity = "1.9.0"
+androidx-lifecycle = "2.7.0"
+androidx-splashScreen = "1.0.1"
 apollo-kotlin = "4.0.0-beta.4"
-compose-jetpack = "1.5.8"
-compose-multipatform = "1.6.0"
+compose-jetpack = "1.6.7"
+compose-multipatform = "1.6.2"
+compose-placeholder = "1.0.7"
+coroutines = "1.8.0"
+decompose = "3.0.0"
+essenty = "2.0.0"
 gradle-plugin = "8.2.0"
 graphql-kotlin = "7.1.1"
 java = "17"
 kermit = "2.0.3"
 koin = "3.6.0-alpha3"
 komapper = "1.17.1"
-kotlin = "1.9.22"
+kotlin = "1.9.23"
 kotlinClothingWebshop = "1.0.0"
 kotlin-dl = "0.5.2"
 kotlinx-datetime = "0.6.0-RC.2"
-ksp = "1.9.22-1.0.17"
+ksp = "1.9.23-1.0.20"
 ktor = "2.3.10"
+ktor-client = "3.0.0-wasm2"
+material3-windowSizeClass = "0.5.0"
+mvikotlin = "4.0.0"
 slf4j = "2.0.13"
 spring-security = "6.2.4"
+sqldelight = "2.0.1"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidx-lifecycle-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashScreen" }
 apollo-kotlin-runtime = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollo-kotlin" }
 compose-jetpack-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-jetpack" }
 compose-jetpack-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-jetpack" }
+compose-placeholder-material3 = { module = "com.eygraber:compose-placeholder-material3", version.ref = "compose-placeholder" }
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
+decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decompose-composeExtension = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
+essenty-lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
 graphql-kotlin-ktor-server = { module = "com.expediagroup:graphql-kotlin-ktor-server", version.ref = "graphql-kotlin" }
 jclOverSlf4j = { module = "org.slf4j:jcl-over-slf4j", version.ref = "slf4j" }
 kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 kermit-koin = { module = "co.touchlab:kermit-koin", version.ref = "kermit" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-ktor = { module = "io.insert-koin:koin-ktor", version.ref = "koin" }
 komapper-dialect-postgresql-r2dbc = { module = "org.komapper:komapper-dialect-postgresql-r2dbc", version.ref = "komapper" }
@@ -38,13 +58,26 @@ komapper-slf4j = { module = "org.komapper:komapper-slf4j", version.ref = "komapp
 kotlin-dl-onnx = { module = "org.jetbrains.kotlinx:kotlin-deeplearning-onnx", version.ref = "kotlin-dl" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
+ktor-client-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor-client" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor-client" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor-client" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor-client" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor-client" }
 ktor-server-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
 ktor-server-auth-jwt = { module = "io.ktor:ktor-server-auth-jwt", version.ref = "ktor" }
 ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor" }
 ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
 ktor-server-cors = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
-ktor-kotlinx-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-kotlinx-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor-client" }
+material3-windowSizeClass = { module = "dev.chrisbanes.material3:material3-window-size-class-multiplatform", version.ref = "material3-windowSizeClass" }
+mvikotlin-core = { module = "com.arkivanov.mvikotlin:mvikotlin", version.ref = "mvikotlin" }
+mvikotlin-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines", version.ref = "mvikotlin" }
+mvikotlin-logging = { module = "com.arkivanov.mvikotlin:mvikotlin-logging", version.ref = "mvikotlin" }
+mvikotlin-main = { module = "com.arkivanov.mvikotlin:mvikotlin-main", version.ref = "mvikotlin" }
 spring-security-crypto = { module = "org.springframework.security:spring-security-crypto", version.ref = "spring-security" }
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
+sqldelight-jvm-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }
@@ -56,3 +89,4 @@ kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref 
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
