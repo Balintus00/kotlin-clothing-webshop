@@ -53,7 +53,7 @@ kotlin {
                 implementation(projects.domain)
 
                 implementation(compose.material3)
-                implementation(compose.materialIconsExtended)
+                implementation(compose.materialIconsExtended)   // TODO remove
                 implementation(compose.runtime)
                 implementation(compose.ui)
                 implementation(libs.apollo.kotlin.runtime)

@@ -1,17 +1,26 @@
 import client
 import SwiftUI
+import UIKit
 
 struct ComposeView: UIViewControllerRepresentable {
+    
+    let component: RootComponent
+    
     func makeUIViewController(context: Context) -> UIViewController {
-        KotlinClothingWebshopClientViewControllerKt.KotlinClothingWebshopClientViewController()
+        KotlinClothingWebshopClientViewControllerKt.KotlinClothingWebshopClientViewController(
+            component: component
+        )
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
 
 struct ContentView: View {
+    
+    let component: RootComponent
+    
     var body: some View {
-        ComposeView()
-                .ignoresSafeArea(.all, edges: .bottom) // Compose has own keyboard handler
+        ComposeView(component: component)
+                .ignoresSafeArea(.keyboard) // Compose has own keyboard handler
     }
 }
