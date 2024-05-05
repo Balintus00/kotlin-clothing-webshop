@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.application)
     alias(libs.plugins.apollo.kotlin)
     alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 kotlin {
@@ -19,6 +19,11 @@ kotlin {
         it.binaries.framework {
             baseName = "client"
             isStatic = true
+
+            export(libs.decompose)
+            export(libs.essenty.lifecycle)
+            export(libs.mvikotlin.logging)
+            export(libs.mvikotlin.main)
         }
     }
 
@@ -35,25 +40,83 @@ kotlin {
         binaries.executable()
     }
 
+    applyDefaultHierarchyTemplate()
+
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(libs.apollo.kotlin.runtime)
+                api(libs.decompose)
+                api(libs.essenty.lifecycle)
+                api(libs.mvikotlin.logging)
+                api(libs.mvikotlin.main)
+
+                implementation(projects.domain)
+
                 implementation(compose.material3)
+                implementation(compose.materialIconsExtended)
                 implementation(compose.runtime)
                 implementation(compose.ui)
+                implementation(libs.apollo.kotlin.runtime)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(libs.coroutines.core)
+                implementation(libs.decompose.composeExtension)
+                implementation(libs.kermit)
+                implementation(libs.koin.core)
+                implementation(libs.ktor.client.contentNegotiation)
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.logging)
+                implementation(libs.ktor.kotlinx.serialization.json)
+                implementation(libs.material3.windowSizeClass)
+                implementation(libs.mvikotlin.core)
+                implementation(libs.mvikotlin.coroutines)
+            }
+        }
+
+        val nonWasmJsMain by creating {
+            dependsOn(commonMain)
+
+            dependencies {
+                implementation(libs.kermit.koin)
             }
         }
 
         val androidMain by getting {
+            dependsOn(nonWasmJsMain)
+
             dependencies {
                 implementation(libs.androidx.activity.compose)
+                implementation(libs.androidx.lifecycle.compose)
+                implementation(libs.androidx.splashScreen)
                 implementation(libs.compose.jetpack.preview)
+                implementation(libs.coroutines.android)
+                implementation(libs.koin.android)
+                implementation(libs.ktor.client.okhttp)
+            }
+        }
+
+        val desktopMain by getting {
+            dependsOn(nonWasmJsMain)
+
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                implementation(libs.ktor.client.okhttp)
+                implementation(libs.coroutines.swing)
+            }
+        }
+
+        val iosMain by getting {
+            dependsOn(nonWasmJsMain)
+
+            dependencies {
+                implementation(libs.ktor.client.darwin)
             }
         }
     }
 
     jvmToolchain(libs.versions.java.get().toInt())
+
+    task("testClasses") // TODO https://youtrack.jetbrains.com/issue/IDEA-348814/Android-Studio-Iguana-breaks-KMP-compilation
 }
 
 android {

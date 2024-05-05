@@ -2,6 +2,7 @@ pluginManagement {
     repositories {
         google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
         gradlePluginPortal()
     }
 }
@@ -11,7 +12,9 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
 
     repositories {
+        google()
         mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
 
         // workaround for https://youtrack.jetbrains.com/issue/KT-51379
         exclusiveContent {
