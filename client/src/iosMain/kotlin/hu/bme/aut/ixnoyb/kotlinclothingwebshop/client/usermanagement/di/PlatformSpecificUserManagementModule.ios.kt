@@ -9,10 +9,11 @@ import kotlinx.coroutines.Dispatchers
 import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import platform.Foundation.NSUserDefaults
 
 internal actual val platformSpecificUserManagementModule: Module = module {
     single<Settings>(named(MULTIPLATFORM_PERSISTENT_DATASOURCE_NAME)) {
-        NSUserDefaultsSettings(TODO())
+        NSUserDefaultsSettings(NSUserDefaults())
     }
 
     single<UserPersistentSecureDatasource> {
