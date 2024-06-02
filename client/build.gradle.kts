@@ -53,12 +53,15 @@ kotlin {
                 implementation(projects.domain)
 
                 implementation(compose.material3)
-                implementation(compose.materialIconsExtended)   // TODO remove
                 implementation(compose.runtime)
                 implementation(compose.ui)
-                implementation(libs.apollo.kotlin.runtime)
                 implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
+                implementation(libs.apollo.kotlin.runtime)
+                implementation(libs.coil)
+                implementation(libs.coil.compose)
+                implementation(libs.coil.network.ktor)
+                implementation(libs.compose.placeholder.material3)
                 implementation(libs.coroutines.core)
                 implementation(libs.decompose.composeExtension)
                 implementation(libs.kermit)
@@ -66,8 +69,9 @@ kotlin {
                 implementation(libs.ktor.client.contentNegotiation)
                 implementation(libs.ktor.client.core)
                 implementation(libs.ktor.client.logging)
-                implementation(libs.ktor.kotlinx.serialization.json)
+                implementation(libs.ktor.kotlinx.serialization.json.client)
                 implementation(libs.material3.windowSizeClass)
+                implementation(libs.multiplatformSettings)
                 implementation(libs.mvikotlin.core)
                 implementation(libs.mvikotlin.coroutines)
             }
@@ -77,6 +81,8 @@ kotlin {
             dependsOn(commonMain)
 
             dependencies {
+                implementation(projects.structuredPersistentDatasource)
+
                 implementation(libs.kermit.koin)
             }
         }
@@ -87,11 +93,12 @@ kotlin {
             dependencies {
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.androidx.lifecycle.compose)
+                implementation(libs.androidx.security.crypto)
                 implementation(libs.androidx.splashScreen)
                 implementation(libs.compose.jetpack.preview)
                 implementation(libs.coroutines.android)
                 implementation(libs.koin.android)
-                implementation(libs.ktor.client.okhttp)
+                implementation(libs.ktor.client.engine.okhttp)
             }
         }
 
@@ -100,8 +107,9 @@ kotlin {
 
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(libs.ktor.client.okhttp)
+                implementation(libs.ktor.client.engine.okhttp)
                 implementation(libs.coroutines.swing)
+                implementation(libs.credentialSecureStorage)
             }
         }
 
@@ -109,7 +117,13 @@ kotlin {
             dependsOn(nonWasmJsMain)
 
             dependencies {
-                implementation(libs.ktor.client.darwin)
+                implementation(libs.ktor.client.engine.darwin)
+            }
+        }
+
+        val wasmJsMain by getting {
+            dependencies {
+                implementation(libs.ktor.client.engine.js)
             }
         }
     }
@@ -156,12 +170,15 @@ android {
     }
 
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
+
         val javaVersionEnumName = "VERSION_${libs.versions.java.get()}"
 
         sourceCompatibility = JavaVersion.valueOf(javaVersionEnumName)
         targetCompatibility = JavaVersion.valueOf(javaVersionEnumName)
     }
     dependencies {
+        coreLibraryDesugaring(libs.android.desugaring)  // TODO reminder kotlinx-datetime
         debugImplementation(libs.compose.jetpack.tooling)
     }
 }

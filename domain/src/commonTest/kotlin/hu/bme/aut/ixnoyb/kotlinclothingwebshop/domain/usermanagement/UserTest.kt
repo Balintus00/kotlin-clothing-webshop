@@ -38,7 +38,7 @@ class UserTest {
             Username(shortUsername)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(Username.INVALID_LENGTH_ERROR_MESSAGE, e.message)
+            assertEquals(Username.TOO_SHORT_ERROR_MESSAGE, e.message)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -52,7 +52,7 @@ class UserTest {
             Username(shortUsername)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(Username.INVALID_LENGTH_ERROR_MESSAGE, e.message)
+            assertEquals(Username.TOO_LONG_ERROR_MESSAGE, e.message)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -122,7 +122,7 @@ class UserTest {
             Email(email)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(Email.INVALID_LENGTH_ERROR_MESSAGE, e.message)
+            assertEquals(Email.TOO_LONG_ERROR_MESSAGE, e.message)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -210,7 +210,7 @@ class UserTest {
             Password(shortPassword)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(Password.INVALID_LENGTH_ERROR_MESSAGE, e.message)
+            assertEquals(Password.TOO_SHORT_ERROR_MESSAGE, e.message)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -218,14 +218,14 @@ class UserTest {
 
     @Test
     fun tooLongPasswordShouldThrowExceptionWithRightMessage() {
-        val longPassword = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
-                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        val longPassword = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 
         try {
             Password(longPassword)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(Password.INVALID_LENGTH_ERROR_MESSAGE, e.message)
+            assertEquals(Password.TOO_LONG_ERROR_MESSAGE, e.message)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -248,7 +248,7 @@ class UserTest {
             FirstName(firstNameValue)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(e.message, FirstName.INVALID_LENGTH_ERROR_MESSAGE)
+            assertEquals(e.message, FirstName.TOO_SHORT_ERROR_MESSAGE)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -262,7 +262,7 @@ class UserTest {
             FirstName(firstNameValue)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(e.message, FirstName.INVALID_LENGTH_ERROR_MESSAGE)
+            assertEquals(e.message, FirstName.TOO_LONG_ERROR_MESSAGE)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -285,7 +285,7 @@ class UserTest {
             LastName(lastNameValue)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(e.message, LastName.INVALID_LENGTH_ERROR_MESSAGE)
+            assertEquals(e.message, LastName.TOO_SHORT_ERROR_MESSAGE)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -299,7 +299,7 @@ class UserTest {
             LastName(lastNameValue)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(e.message, LastName.INVALID_LENGTH_ERROR_MESSAGE)
+            assertEquals(e.message, LastName.TOO_LONG_ERROR_MESSAGE)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -331,7 +331,7 @@ class UserTest {
             DateOfBirth(date)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(DateOfBirth.INVALID_DATE_ERROR_MESSAGE, e.message)
+            assertEquals(DateOfBirth.TOO_EARLY_DATE_ERROR_MESSAGE, e.message)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }
@@ -349,7 +349,7 @@ class UserTest {
             DateOfBirth(date)
             fail("No exception was thrown")
         } catch (e: IllegalArgumentException) {
-            assertEquals(DateOfBirth.INVALID_DATE_ERROR_MESSAGE, e.message)
+            assertEquals(DateOfBirth.TOO_LATE_DATE_ERROR_MESSAGE, e.message)
         } catch (t: Throwable) {
             fail("Exception with wrong type was thrown: $t")
         }

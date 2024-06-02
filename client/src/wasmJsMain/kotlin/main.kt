@@ -7,7 +7,7 @@ import com.arkivanov.essenty.lifecycle.stop
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.di.appModule
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.ui.UserInterface
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.ui.RootScreen
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.viewlogic.DefaultRootComponent
 import kotlinx.browser.document
 import org.koin.core.context.startKoin
@@ -33,7 +33,7 @@ fun main() {
     lifecycle.attachToDocument()
 
     CanvasBasedWindow("Kotlin Clothing Webshop", canvasElementId = "ComposeTarget") {
-        UserInterface(rootComponent)
+        RootScreen(rootComponent)
     }
 }
 

@@ -1,5 +1,5 @@
-query GetRecommendedArticles($customerId: String!) {
-    getRecommendedArticles(customerId: $customerId) {
-        id
+query GetRecommendedArticles {
+    getRecommendedArticles {
+        id, name, brand, price, description
     }
 }

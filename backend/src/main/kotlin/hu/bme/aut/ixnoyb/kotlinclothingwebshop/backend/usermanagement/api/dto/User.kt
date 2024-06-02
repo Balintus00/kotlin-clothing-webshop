@@ -1,7 +1,7 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.api.dto
 
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.domain.UserCandidate as DomainAuthenticatedUser
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.domain.User as DomainUser
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.service.UserCandidate as DomainAuthenticatedUser
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.service.User as DomainUser
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.DateOfBirth
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.Email
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.FirstName
@@ -30,8 +30,14 @@ internal fun DomainUser.toDto(): User = User(
 
 @Serializable
 internal data class UpdatedUserCandidate(
-    val updatedUser: AuthenticatedUser,
     val currentPassword: String,
+    val newPassword: String? = null,
+    val username: String,
+    val email: String,
+    val password: String,
+    val firstName: String,
+    val lastName: String,
+    val dateOfBirth: String,
 )
 
 @Serializable

@@ -1,0 +1,5 @@
+query GetArticleByID($articleID: String!) {
+    getArticleById(articleID: $articleID) {
+        id, name, brand, price, description, color, shade, graphicalAppearance, index, garmentGroup
+    }
+}

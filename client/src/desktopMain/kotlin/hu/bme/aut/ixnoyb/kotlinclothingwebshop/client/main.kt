@@ -13,7 +13,7 @@ import com.arkivanov.mvikotlin.core.utils.setMainThreadId
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.di.appModule
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.ui.UserInterface
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.ui.RootScreen
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.viewlogic.DefaultRootComponent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -48,7 +48,7 @@ fun main() {
             state = windowState,
             title = "Kotlin Clothing Webshop",
         ) {
-            UserInterface(rootComponent)
+            RootScreen(rootComponent)
         }
     }
 }

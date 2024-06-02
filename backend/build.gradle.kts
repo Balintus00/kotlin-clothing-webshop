@@ -21,6 +21,7 @@ kotlin {
 dependencies {
     implementation(projects.domain)
 
+    implementation(libs.bouncyCastle)
     implementation(libs.graphql.kotlin.ktor.server)
     implementation(libs.jclOverSlf4j)
     implementation(libs.kermit)
@@ -30,7 +31,7 @@ dependencies {
     implementation(libs.komapper.dialect.postgresql.r2dbc)
     implementation(libs.komapper.starter.r2dbc)
     implementation(libs.kotlin.dl.onnx)
-    implementation(libs.ktor.kotlinx.serialization.json)
+    implementation(libs.ktor.kotlinx.serialization.json.server)
     implementation(libs.ktor.server.auth)
     implementation(libs.ktor.server.auth.jwt)
     implementation(libs.ktor.server.cio)

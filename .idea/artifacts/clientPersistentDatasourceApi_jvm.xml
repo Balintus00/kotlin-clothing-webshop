@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="clientPersistentDatasourceApi-jvm">
+    <output-path>$PROJECT_DIR$/clientPersistentDatasourceApi/build/libs</output-path>
+    <root id="archive" name="clientPersistentDatasourceApi-jvm.jar">
+      <element id="module-output" name="KotlinClothingWebshop.clientPersistentDatasourceApi.jvmMain" />
+    </root>
+  </artifact>
+</component>

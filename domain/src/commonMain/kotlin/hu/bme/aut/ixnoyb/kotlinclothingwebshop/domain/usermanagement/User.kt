@@ -1,5 +1,6 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement
 
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.HUNGARIAN_ABC_LETTERS
 import kotlinx.datetime.Clock
 import kotlinx.datetime.DatePeriod
 import kotlinx.datetime.LocalDate
@@ -7,8 +8,6 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.minus
 import kotlinx.datetime.toLocalDateTime
 import kotlin.jvm.JvmInline
-
-private const val HUNGARIAN_ABC_LETTERS = "aábcdeéfghiíjklmnoóöőpqrstuúüűvwxyz"
 
 @JvmInline
 @Suppress("MemberVisibilityCanBePrivate")
@@ -19,19 +18,22 @@ value class UserID(val value: String)
 value class Username(val value: String) {
 
     init {
-        require(value.length in MINIMUM_LENGTH..MAXIMUM_LENGTH) {
-            INVALID_LENGTH_ERROR_MESSAGE
-        }
+        require(value.length >= MINIMUM_LENGTH) { TOO_SHORT_ERROR_MESSAGE }
+        require(value.length <= MAXIMUM_LENGTH) { TOO_LONG_ERROR_MESSAGE }
+
         require(value.all { it.lowercase() in HUNGARIAN_ABC_LETTERS || it.isDigit() }) {
             INVALID_CHARACTER_ERROR_MESSAGE
         }
     }
 
     companion object {
-        private const val MINIMUM_LENGTH = 3
-        private const val MAXIMUM_LENGTH = 63
+        const val MINIMUM_LENGTH = 3
+        const val MAXIMUM_LENGTH = 63
 
-        const val INVALID_LENGTH_ERROR_MESSAGE = "Username length is invalid!"
+        const val TOO_SHORT_ERROR_MESSAGE =
+            "Username must be at least $MINIMUM_LENGTH characters long!"
+        const val TOO_LONG_ERROR_MESSAGE =
+            "Username must be at most $MAXIMUM_LENGTH characters long!"
         const val INVALID_CHARACTER_ERROR_MESSAGE =
             "Username can only contain hungarian ABC letters and numbers!"
     }
@@ -42,7 +44,7 @@ value class Username(val value: String) {
 value class Email(val value: String) {
 
     init {
-        require(value.length <= TOTAL_MAXIMUM_LENGTH) { INVALID_LENGTH_ERROR_MESSAGE }
+        require(value.length <= TOTAL_MAXIMUM_LENGTH) { TOO_LONG_ERROR_MESSAGE }
         require(value.all { (it in PROHIBITED_CHARACTERS).not() }) {
             CONTAINS_PROHIBITED_CHARACTER_ERROR_MESSAGE
         }
@@ -66,7 +68,7 @@ value class Email(val value: String) {
     }
 
     companion object {
-        private const val TOTAL_MAXIMUM_LENGTH = 254
+        const val TOTAL_MAXIMUM_LENGTH = 254
 
         private const val LOCAL_PART_MINIMUM_LENGTH = 1
         private const val LOCAL_PART_MAXIMUM_LENGTH = 63
@@ -75,7 +77,7 @@ value class Email(val value: String) {
 
         private const val DOMAIN_ALLOWED_SPECIAL_CHARACTERS = "-."
 
-        const val INVALID_LENGTH_ERROR_MESSAGE = "Email address is too long!"
+        const val TOO_LONG_ERROR_MESSAGE = "Email address is too long!"
         const val CONTAINS_PROHIBITED_CHARACTER_ERROR_MESSAGE =
             "Email address contains prohibited characters!"
         const val INVALID_SEPARATOR_COUNT_ERROR_MESSAGE =
@@ -83,8 +85,8 @@ value class Email(val value: String) {
         const val INVALID_LOCAL_PART_LENGTH_ERROR_MESSAGE = "Invalid local part length!"
         const val INVALID_DOMAIN_PART_CHARACTER_ERROR_MESSAGE = "Invalid email address!"
 
-        val errorMessages = setOf(
-            INVALID_LENGTH_ERROR_MESSAGE,
+        val ERROR_MESSAGES = setOf(
+            TOO_LONG_ERROR_MESSAGE,
             CONTAINS_PROHIBITED_CHARACTER_ERROR_MESSAGE,
             INVALID_SEPARATOR_COUNT_ERROR_MESSAGE,
             INVALID_LOCAL_PART_LENGTH_ERROR_MESSAGE,
@@ -98,16 +100,16 @@ value class Email(val value: String) {
 value class Password(val value: String) {
 
     init {
-        require(value.length in MINIMUM_LENGTH..MAXIMUM_LENGTH) {
-            INVALID_LENGTH_ERROR_MESSAGE
-        }
+        require(value.length >= MINIMUM_LENGTH) { TOO_SHORT_ERROR_MESSAGE }
+        require(value.length <= MAXIMUM_LENGTH) { TOO_LONG_ERROR_MESSAGE }
     }
 
     companion object {
-        private const val MINIMUM_LENGTH = 12
-        private const val MAXIMUM_LENGTH = 127
+        const val MINIMUM_LENGTH = 12
+        const val MAXIMUM_LENGTH = 127
 
-        const val INVALID_LENGTH_ERROR_MESSAGE = "Password length is invalid!"
+        const val TOO_SHORT_ERROR_MESSAGE = "Password length is too short!"
+        const val TOO_LONG_ERROR_MESSAGE = "Password length is too long!"
     }
 }
 
@@ -116,19 +118,21 @@ value class Password(val value: String) {
 value class FirstName(val value: String) {
 
     init {
-        require(value.length in MINIMUM_LENGTH..MAXIMUM_LENGTH) {
-            INVALID_LENGTH_ERROR_MESSAGE
-        }
+        require(value.length >= MINIMUM_LENGTH) { TOO_SHORT_ERROR_MESSAGE }
+        require(value.length <= MAXIMUM_LENGTH) { TOO_LONG_ERROR_MESSAGE }
         require(value.all { it.lowercase() in HUNGARIAN_ABC_LETTERS }) {
             INVALID_CHARACTER_ERROR_MESSAGE
         }
     }
 
     companion object {
-        private const val MINIMUM_LENGTH = 3
-        private const val MAXIMUM_LENGTH = 63
+        const val MINIMUM_LENGTH = 3
+        const val MAXIMUM_LENGTH = 63
 
-        const val INVALID_LENGTH_ERROR_MESSAGE = "First name has invalid length!"
+        const val TOO_SHORT_ERROR_MESSAGE =
+            "First name must be at least $MINIMUM_LENGTH characters long!"
+        const val TOO_LONG_ERROR_MESSAGE =
+            "First name must be at most $MAXIMUM_LENGTH characters long!"
         const val INVALID_CHARACTER_ERROR_MESSAGE = "First name contains invalid character!"
     }
 }
@@ -137,9 +141,9 @@ value class FirstName(val value: String) {
 @Suppress("MemberVisibilityCanBePrivate")
 value class LastName(val value: String) {
     init {
-        require(value.length in MINIMUM_LENGTH..MAXIMUM_LENGTH) {
-            INVALID_LENGTH_ERROR_MESSAGE
-        }
+        require(value.length >= MINIMUM_LENGTH) { TOO_SHORT_ERROR_MESSAGE }
+        require(value.length <= MAXIMUM_LENGTH) { TOO_LONG_ERROR_MESSAGE }
+
         require(
             value.all { it.lowercase() in (HUNGARIAN_ABC_LETTERS + LAST_NAME_SPECIAL_CHARACTERS) }
         ) {
@@ -148,12 +152,15 @@ value class LastName(val value: String) {
     }
 
     companion object {
-        private const val MINIMUM_LENGTH = 3
-        private const val MAXIMUM_LENGTH = 63
+        const val MINIMUM_LENGTH = 3
+        const val MAXIMUM_LENGTH = 63
 
         private const val LAST_NAME_SPECIAL_CHARACTERS = "-'"
 
-        const val INVALID_LENGTH_ERROR_MESSAGE = "Last name has invalid length!"
+        const val TOO_SHORT_ERROR_MESSAGE =
+            "Last name must be at least $MINIMUM_LENGTH characters long!"
+        const val TOO_LONG_ERROR_MESSAGE =
+            "Last name must be at most $MAXIMUM_LENGTH characters long!"
         const val INVALID_CHARACTER_ERROR_MESSAGE = "Last name contains invalid character!"
     }
 }
@@ -168,23 +175,28 @@ value class DateOfBirth(val value: LocalDate) {
                 year = EARLIEST_ALLOWED_YEAR,
                 monthNumber = EARLIEST_ALLOWED_MONTH,
                 dayOfMonth = EARLIEST_ALLOWED_DAY,
-            ) &&
-                    value <= Clock.System.now()
+            )
+        ) { TOO_EARLY_DATE_ERROR_MESSAGE }
+
+        require(
+            value <= Clock.System.now()
                 .toLocalDateTime(TimeZone.currentSystemDefault())
                 .date
                 .minus(DatePeriod(years = LATEST_ALLOWED_YEAR_DIFFERENCE))
-        ) {
-            INVALID_DATE_ERROR_MESSAGE
-        }
+        ) { TOO_LATE_DATE_ERROR_MESSAGE }
     }
 
     companion object {
-        private const val EARLIEST_ALLOWED_YEAR = 1900
-        private const val EARLIEST_ALLOWED_MONTH = 1
-        private const val EARLIEST_ALLOWED_DAY = 1
+        const val EARLIEST_ALLOWED_YEAR = 1900
+        const val EARLIEST_ALLOWED_MONTH = 1
+        const val EARLIEST_ALLOWED_DAY = 1
 
-        private const val LATEST_ALLOWED_YEAR_DIFFERENCE = 8
+        const val LATEST_ALLOWED_YEAR_DIFFERENCE = 8
 
-        const val INVALID_DATE_ERROR_MESSAGE = "Provided date is not in supported range!"
+        const val TOO_EARLY_DATE_ERROR_MESSAGE =
+            "Earliest supported date is the following in ISO8601 format: " +
+                    "${EARLIEST_ALLOWED_YEAR}-${EARLIEST_ALLOWED_MONTH}-${EARLIEST_ALLOWED_DAY}!"
+        const val TOO_LATE_DATE_ERROR_MESSAGE = "Last supported date is before exactly " +
+                "$LATEST_ALLOWED_YEAR_DIFFERENCE before the current date!"
     }
 }

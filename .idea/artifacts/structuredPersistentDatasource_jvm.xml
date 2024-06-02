@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="structuredPersistentDatasource-jvm">
+    <output-path>$PROJECT_DIR$/structuredPersistentDatasource/build/libs</output-path>
+    <root id="archive" name="structuredPersistentDatasource-jvm.jar">
+      <element id="module-output" name="KotlinClothingWebshop.structuredPersistentDatasource.jvmMain" />
+    </root>
+  </artifact>
+</component>

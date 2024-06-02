@@ -186,3 +186,6 @@ nbdist/
 
 rootProject/gradle/
 rootProject/
+
+src/main/resources/images
+src/main/resources/models

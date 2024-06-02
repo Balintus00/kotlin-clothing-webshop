@@ -1,6 +1,6 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.datasource.entity
 
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.usermanagement.AuthenticationToken as DomainAuthenticationToken
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.backend.usermanagement.service.model.AuthenticationToken as DomainAuthenticationToken
 import org.komapper.annotation.KomapperEntity
 import org.komapper.annotation.KomapperId
 import org.komapper.annotation.KomapperTable
