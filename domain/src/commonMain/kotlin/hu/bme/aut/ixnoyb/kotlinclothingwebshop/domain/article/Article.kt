@@ -46,7 +46,7 @@ value class Name(val value: String) {
         private const val MINIMUM_LENGTH = 1
         const val MAXIMUM_LENGTH = 64
 
-        const val ALLOWED_LETTERS = "$HUNGARIAN_ABC_LETTERS$ARTICLES_ALLOWED_SPECIAL_CHARACTERS "
+        val ALLOWED_LETTERS = "$HUNGARIAN_ABC_LETTERS$ARTICLES_ALLOWED_SPECIAL_CHARACTERS "
 
         const val ERROR_MESSAGE_TOO_SHORT = "Name must be at least $MINIMUM_LENGTH long!"
         const val ERROR_MESSAGE_TOO_LONG = "Name can be maximum $MAXIMUM_LENGTH long!"
@@ -79,7 +79,7 @@ value class Brand(val value: String) {
         private const val MINIMUM_LENGTH = 1
         const val MAXIMUM_LENGTH = 64
 
-        const val ALLOWED_LETTERS = "$HUNGARIAN_ABC_LETTERS 0123456789"
+        val ALLOWED_LETTERS = "$HUNGARIAN_ABC_LETTERS 0123456789"
 
         const val ERROR_MESSAGE_TOO_SHORT = "Brand must be at least $MINIMUM_LENGTH long!"
         const val ERROR_MESSAGE_TOO_LONG = "Brand can be maximum $MAXIMUM_LENGTH long!"

@@ -1,5 +1,6 @@
 package hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.viewlogic.model
 
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.repository.model.ArticlePreview as DomainArticlePreview
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.article.Color as DomainColor
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.article.GarmentGroup as DomainGarmentGroup
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.article.GraphicalAppearance as DomainGraphicalAppearance
@@ -12,6 +13,14 @@ data class ArticlePreview(
     val description: String,
     val imageUrl: String,
     val name: String,
+)
+
+fun DomainArticlePreview.toUIArticlePreview() = ArticlePreview(
+    id = id.value,
+    brand = brand.value,
+    description = description.value,
+    imageUrl = imageUrl.toString(),
+    name = name.value,
 )
 
 data class Article(
