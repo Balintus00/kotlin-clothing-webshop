@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="secureKeyValuePersistentDatasource-jvm">
+    <output-path>$PROJECT_DIR$/secureKeyValuePersistentDatasource/build/libs</output-path>
+    <root id="archive" name="secureKeyValuePersistentDatasource-jvm.jar">
+      <element id="module-output" name="KotlinClothingWebshop.secureKeyValuePersistentDatasource.jvmMain" />
+    </root>
+  </artifact>
+</component>

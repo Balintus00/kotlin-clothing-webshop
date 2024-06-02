@@ -140,6 +140,7 @@ fabric.properties
 /.idea/androidTestResultsUserPreferences.xml
 
 notebooks/wandb
+notebooks/models
 
 ml_artifacts/
 notebooks/two_tower_model_clothing_recommendation_system_cache

@@ -1,0 +1,39 @@
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.structuredPersistentDatasource.Color;
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.structuredPersistentDatasource.GarmentGroup;
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.structuredPersistentDatasource.GraphicalAppearance;
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.structuredPersistentDatasource.Index;
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.structuredPersistentDatasource.Shade;
+
+CREATE TABLE article (
+    id TEXT PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    price INTEGER NOT NULL,
+    brand TEXT NOT NULL,
+    description TEXT NOT NULL,
+    image_url TEXT NOT NULL,
+    color TEXT AS Color,
+    garment_group TEXT AS GarmentGroup,
+    graphical_appearance TEXT AS GraphicalAppearance,
+    article_index TEXT AS Index,
+    shade TEXT AS Shade
+);
+
+selectAllPreview:
+SELECT id, name, price, brand, description, image_url
+FROM article;
+
+selectByID:
+SELECT *
+FROM article
+WHERE id = ?;
+
+clear:
+DELETE FROM article;
+
+insertPreview:
+INSERT OR IGNORE INTO article(id, name, price, brand, description, image_url)
+VALUES ?;
+
+upsertArticle:
+INSERT OR REPLACE INTO article(id, name, price, brand, description, image_url, color, garment_group, graphical_appearance, article_index, shade)
+VALUES ?;

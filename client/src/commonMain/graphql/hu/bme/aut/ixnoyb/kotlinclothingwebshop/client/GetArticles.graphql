@@ -1,0 +1,5 @@
+query GetArticles($filter: ArticleFilterInput!, $lastReadArticleID: String, $pageSize: Int!) {
+    getArticles(filter: $filter, lastReadArticleID: $lastReadArticleID, pageSize: $pageSize) {
+        id, name, brand, price, description
+    }
+}

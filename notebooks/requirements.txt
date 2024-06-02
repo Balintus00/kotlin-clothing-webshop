@@ -1,4 +1,10 @@
+onnx
 numpy
 pandas
-torch
 wandb
+
+# If you want to use CUDA, you might need a custom index url for this package
+# In that case uncomment the line below, and customize it your needs
+# --extra-index-url https://download.pytorch.org/whl/cu121
+# For more information see the installation part in the official guide: https://pytorch.org/
+torch

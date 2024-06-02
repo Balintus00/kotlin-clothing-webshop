@@ -7,12 +7,12 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.arkivanov.decompose.defaultComponentContext
 import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
-import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.ui.UserInterface
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.ui.RootScreen
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.root.viewlogic.DefaultRootComponent
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        installSplashScreen()   // TODO
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         val rootComponent = DefaultRootComponent(
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-            UserInterface(rootComponent)
+            RootScreen(rootComponent)
         }
     }
 }

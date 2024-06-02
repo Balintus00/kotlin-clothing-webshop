@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="clientPersistentDatasourceApi-wasm-js">
+    <output-path>$PROJECT_DIR$/clientPersistentDatasourceApi/build/libs</output-path>
+    <root id="archive" name="clientPersistentDatasourceApi-wasm-js.jar">
+      <element id="module-output" name="KotlinClothingWebshop.clientPersistentDatasourceApi.wasmJsMain" />
+    </root>
+  </artifact>
+</component>

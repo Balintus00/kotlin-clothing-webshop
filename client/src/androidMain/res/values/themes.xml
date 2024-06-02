@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.KotlinClothingWebshop.Starting" parent="Theme.KotlinClothingWebshop">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.KotlinClothingWebshop</item>
+    </style>
+
     <style name="Theme.KotlinClothingWebshop" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

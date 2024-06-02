@@ -4,9 +4,19 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.popWhile
+import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.mvikotlin.core.store.StoreFactory
-import hu.bme.aut.ixnoyb.thelordoftheringscharacterwiki.viewlogic.utility.toStateFlow
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.viewlogic.ArticleBrowsingRootComponent
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.viewlogic.DefaultArticleBrowsingRootComponent
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.common.viewlogic.toStateFlow
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.ordering.viewlogic.DefaultOrderHistoryComponent
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.ordering.viewlogic.DefaultOrderingRootComponent
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.ordering.viewlogic.OrderHistoryComponent
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.ordering.viewlogic.OrderingRootComponent
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.usermanagement.viewlogic.DefaultUserManagementRootComponent
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.usermanagement.viewlogic.UserManagementRootComponent
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.Serializable
 
@@ -15,16 +25,18 @@ interface RootComponent {
     val childStack: StateFlow<ChildStack<*, Child>>
 
     fun selectArticleBrowserFeature()
-    fun selectCheckoutFeature()
+    fun selectOrderingFeature()
     fun selectUserManagementFeature()
 
     sealed interface Child {
 
-        class ArticleBrowserFeature() : Child
+        class ArticleBrowserFeature(val component: ArticleBrowsingRootComponent) : Child
 
-        class CheckoutFeature() : Child
+        class OrderingFeature(val component: OrderingRootComponent) : Child
 
-        class UserManagementFeature() : Child
+        class OrderHistoryFeature(val component: OrderHistoryComponent) : Child
+
+        class UserManagementFeature(val component: UserManagementRootComponent) : Child
     }
 }
 
@@ -46,10 +58,55 @@ class DefaultRootComponent(
     private fun createChild(
         config: Config,
         componentContext: ComponentContext
-    ): RootComponent.Child = when(config) {
-        Config.ArticleBrowserFeature -> RootComponent.Child.ArticleBrowserFeature()
-        Config.CheckoutFeature -> RootComponent.Child.CheckoutFeature()
-        Config.UserManagementFeature -> RootComponent.Child.UserManagementFeature()
+    ): RootComponent.Child = when (config) {
+        Config.ArticleBrowserFeature -> {
+            RootComponent.Child.ArticleBrowserFeature(
+                DefaultArticleBrowsingRootComponent(
+                    componentContext = componentContext,
+                    onArticleSuccessfullyBasketToAddedAction = {
+                        navigation.replaceAll(Config.OrderingFeature)
+                    },
+                    storeFactory = storeFactory,
+                )
+            )
+        }
+
+        Config.OrderHistoryFeature -> {
+            RootComponent.Child.OrderHistoryFeature(
+                DefaultOrderHistoryComponent(
+                    navigateBackAction = {
+                        navigation.popWhile { it is Config.OrderHistoryFeature }
+                    },
+                    componentContext = componentContext,
+                    storeFactory = storeFactory,
+                )
+            )
+        }
+
+        Config.OrderingFeature -> {
+            RootComponent.Child.OrderingFeature(
+                DefaultOrderingRootComponent(
+                    componentContext = componentContext,
+                    onSuccessfulOrderingAction = {
+                        navigation.replaceAll(Config.UserManagementFeature)
+                        navigation.pushNew(Config.OrderHistoryFeature)
+                    },
+                    storeFactory = storeFactory,
+                )
+            )
+        }
+
+        Config.UserManagementFeature -> {
+            RootComponent.Child.UserManagementFeature(
+                DefaultUserManagementRootComponent(
+                    componentContext = componentContext,
+                    navigateToPurchaseHistoryAction = {
+                        navigation.pushNew(Config.OrderHistoryFeature)
+                    },
+                    storeFactory = storeFactory
+                )
+            )
+        }
     }
 
 
@@ -57,8 +114,8 @@ class DefaultRootComponent(
         navigation.replaceAll(Config.ArticleBrowserFeature)
     }
 
-    override fun selectCheckoutFeature() {
-        navigation.replaceAll(Config.CheckoutFeature)
+    override fun selectOrderingFeature() {
+        navigation.replaceAll(Config.OrderingFeature)
     }
 
     override fun selectUserManagementFeature() {
@@ -70,11 +127,14 @@ class DefaultRootComponent(
 
         @Serializable
         data object ArticleBrowserFeature : Config
-        @Serializable
 
-        data object CheckoutFeature : Config
         @Serializable
+        data object OrderingFeature : Config
 
+        @Serializable
+        data object OrderHistoryFeature : Config
+
+        @Serializable
         data object UserManagementFeature : Config
     }
 }

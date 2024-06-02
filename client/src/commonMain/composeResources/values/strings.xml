@@ -4,4 +4,264 @@
     <string name="navigation_bar_checkout_feature_item_label">Basket</string>
     <string name="navigation_bar_user_management_feature_item_label">Profile</string>
     <!-- endregion -->
+
+    <!-- region Date Picker Dialog -->
+    <string name="date_picker_dialog_confirm_button_text">OK</string>
+    <string name="date_picker_dialog_cancel_button_text">Cancel</string>
+    <!-- endregion -->
+
+    <!-- region Unauthenticated Information Screen -->
+    <string name="unauthenticated_information_screen_title">Register or sign in to access more features!</string>
+    <string name="unauthenticated_information_screen_description">After signing in, you can buy articles, and see your order history.</string>
+    <string name="unauthenticated_information_screen_login_button_text">Login</string>
+    <string name="unauthenticated_information_screen_registration_button_text">Register</string>
+    <!-- endregion -->
+
+    <!-- region Login Screen -->
+    <string name="login_screen_top_app_bar_title">Login</string>
+    <string name="login_screen_email_text_field_label">Email</string>
+    <string name="login_screen_password_text_field_label">Password</string>
+    <string name="login_screen_login_button_text">Login</string>
+    <string name="login_screen_error_message_invalid_credentials">Incorrect username or password</string>
+    <!-- endregion -->
+
+    <!-- region Registration Screen -->
+    <string name="registration_screen_top_app_bar_title">Registration</string>
+    <string name="registration_screen_first_name_text_field_label">First name</string>
+    <string name="registration_screen_last_name_text_field_label">Last name</string>
+    <string name="registration_screen_date_of_birth_text_field_label">Date of birth</string>
+    <string name="registration_screen_username_text_field_label">Username</string>
+    <string name="registration_screen_email_text_field_label">Email</string>
+    <string name="registration_screen_password_text_field_label">Password</string>
+    <string name="registration_screen_registration_button_text">Register</string>
+    <!-- endregion -->
+
+    <!-- region Profile Screen -->
+    <string name="profile_screen_top_app_bar_title">Profile</string>
+    <string name="profile_screen_first_name_user_attribute">First name</string>
+    <string name="profile_screen_last_name_user_attribute">Last name</string>
+    <string name="profile_screen_date_of_birth_user_attribute">Date of birth</string>
+    <string name="profile_screen_username_user_attribute">Username</string>
+    <string name="profile_screen_email_user_attribute">Email</string>
+    <string name="profile_screen_purchase_history_button_text">Purchase history</string>
+    <string name="profile_screen_menu_logout_label">Logout</string>
+    <string name="profile_screen_menu_modify_account_label">Modify account</string>
+    <string name="profile_screen_menu_delete_account_label">Delete account</string>
+    <string name="profile_screen_delete_account_dialog_title">Delete account</string>
+    <string name="profile_screen_delete_account_dialog_description">Are you sure you want to delete your account? All of your data will be lost!</string>
+    <string name="profile_screen_delete_account_dialog_password_text_field_label">Password</string>
+    <string name="profile_screen_delete_account_dialog_password_text_field_invalid_error">The entered password is incorrect!</string>
+    <string name="profile_screen_delete_account_dialog_instruction">Enter your password to confirm your decision!</string>
+    <string name="profile_screen_delete_account_dialog_delete_button_text">Delete</string>
+    <string name="profile_screen_delete_account_dialog_cancel_button_text">Cancel</string>
+    <string name="profile_screen_profile_loading_error_snackbar_action_label">Retry</string>
+    <string name="profile_screen_profile_loading_error_snackbar_message">Failed to load profile data!</string>
+    <!-- endregion -->
+
+    <!-- region Modify Account Screen -->
+    <string name="modify_account_screen_top_app_bar_title">Modify account</string>
+    <string name="modify_account_screen_first_name_text_field_label">New first name</string>
+    <string name="modify_account_screen_last_name_text_field_label">New last name</string>
+    <string name="modify_account_screen_date_of_birth_text_field_label">New date of birth</string>
+    <string name="modify_account_screen_username_text_field_label">New username</string>
+    <string name="modify_account_screen_email_text_field_label">New email</string>
+    <string name="modify_account_screen_password_text_field_label">New password</string>
+    <string name="modify_account_screen_current_password_text_field_label">Current password</string>
+    <string name="modify_account_screen_modification_button_text">Modify</string>
+    <string name="modify_account_screen_new_password_text_field_default_supporting_text">If you don't want to change your current password, leave this field open!</string>
+    <string name="modify_account_screen_initial_loading_snackbar_error_action_label">Retry</string>
+    <string name="modify_account_screen_initial_loading_snackbar_error_message">Something went wrong! Please try again!</string>
+    <string name="modify_account_screen_error_message_wrong_current_password">Given password is not the currently active password!</string>
+    <!-- endregion -->
+
+    <!-- TODO improve error message UX -->
+    <!-- TODO Also templating could be used to improve maintainability -->
+    <!-- region User Management Common Error Messages -->
+    <string name="error_message_general_error">Something went wrong. Please try again.</string>
+    <string name="error_message_username_too_short">Username must at least 3 characters long!</string>
+    <string name="error_message_username_too_long">Username can contain maximum 63 characters!</string>
+    <string name="error_message_username_invalid_character">Username can only contain English and Hungarian ABC letters and numbers!</string>
+    <string name="error_message_username_taken">The chosen username is already taken!</string>
+    <string name="error_message_email_invalid">Invalid email address</string>
+    <string name="error_message_email_taken">The chosen email address is already taken!</string>
+    <string name="error_message_email_too_long">Maximum supported email address length is 254 characters!</string>
+    <string name="error_message_password_too_short">Password must be at least 12 characters long!</string>
+    <string name="error_message_password_too_long">Password can be maximum 127 characters long!</string>
+    <string name="error_message_first_name_too_short">First name must be at least 3 characters long!</string>
+    <string name="error_message_first_name_too_long">First name can be maximum 63 characters long!</string>
+    <string name="error_message_first_name_contains_invalid_character">First name can contain only the letters of English and Hungarian ABC!</string>
+    <string name="error_message_last_name_too_short">Last name must be at least 3 characters long!</string>
+    <string name="error_message_last_name_too_long">Last name can be maximum 63 characters long!</string>
+    <string name="error_message_last_name_contains_invalid_character">Last name can contain only the letters of English and Hungarian ABC and ' and -!</string>
+    <string name="error_message_date_of_birth_too_old_date">The oldest selectable date is 1900 January 1!</string>
+    <string name="error_message_date_of_birth_too_recent_date">The chosen birth date is too recent!</string>
+    <!-- endregion -->
+
+    <!-- TODO rename app_bar to appbar -->
+    <!-- region Featured Articles Screen -->
+    <string name="featured_articles_screen_top_appbar_title">Featured articles</string>
+    <!-- endregion -->
+
+    <!-- region Article Details Screen -->
+    <string name="article_details_screen_top_appbar_title">Details</string>
+    <string name="article_details_screen_brand_attribute">by %1$s</string>
+    <string name="article_details_screen_price_attribute">%1$s HUF</string>
+    <string name="article_details_screen_description_label">Description</string>
+    <string name="article_details_screen_color_label">Color</string>
+    <string name="article_details_screen_shade_label">Shade</string>
+    <string name="article_details_screen_graphical_appearance_label">Graphical appearance</string>
+    <string name="article_details_screen_index_label">Index</string>
+    <string name="article_details_screen_garment_group_label">Garment group</string>
+    <!-- endregion -->
+
+    <!-- region Article Color values -->
+    <string name="article_color_attribute_beige">Beige</string>
+    <string name="article_color_attribute_black">Black</string>
+    <string name="article_color_attribute_blue">Blue</string>
+    <string name="article_color_attribute_bluish_green">Bluish Green</string>
+    <string name="article_color_attribute_brown">Brown</string>
+    <string name="article_color_attribute_green">Green</string>
+    <string name="article_color_attribute_grey">Grey</string>
+    <string name="article_color_attribute_khaki_green">Khaki Green</string>
+    <string name="article_color_attribute_lilac_purple">Lilac Purple</string>
+    <string name="article_color_attribute_metal">Metal</string>
+    <string name="article_color_attribute_mole">Mole</string>
+    <string name="article_color_attribute_orange">Orange</string>
+    <string name="article_color_attribute_pink">Pink</string>
+    <string name="article_color_attribute_red">Red</string>
+    <string name="article_color_attribute_turquoise">Turquoise</string>
+    <string name="article_color_attribute_white">White</string>
+    <string name="article_color_attribute_yellow">Yellow</string>
+    <string name="article_color_attribute_yellowish_green">Yellowish Green</string>
+    <string name="article_color_attribute_other">Other</string>
+    <!-- endregion -->
+
+    <!-- region Article Garment Group values -->
+    <string name="article_garment_group_attribute_accessories">Accessories</string>
+    <string name="article_garment_group_attribute_blouses">Blouses</string>
+    <string name="article_garment_group_attribute_dressed">Dressed</string>
+    <string name="article_garment_group_attribute_dresses_ladies">Dresses Ladies</string>
+    <string name="article_garment_group_attribute_dresses_skirts_girls">Dresses/Skirts girls</string>
+    <string name="article_garment_group_attribute_jersey_basic">Jersey Basic</string>
+    <string name="article_garment_group_attribute_jersey_fancy">Jersey Fancy</string>
+    <string name="article_garment_group_attribute_knitwear">Knitwear</string>
+    <string name="article_garment_group_attribute_outdoor">Outdoor</string>
+    <string name="article_garment_group_attribute_shirts">Shirts</string>
+    <string name="article_garment_group_attribute_shoes">Shoes</string>
+    <string name="article_garment_group_attribute_shorts">Shorts</string>
+    <string name="article_garment_group_attribute_skirts">Skirts</string>
+    <string name="article_garment_group_attribute_socks_and_tights">Socks and Tights</string>
+    <string name="article_garment_group_attribute_special_offers">Special Offers</string>
+    <string name="article_garment_group_attribute_swimwear">Swimwear</string>
+    <string name="article_garment_group_attribute_trousers">Trousers</string>
+    <string name="article_garment_group_attribute_trousers_denim">Trousers Denim</string>
+    <string name="article_garment_group_attribute_under_nightwear">Under and Nightwear</string>
+    <string name="article_garment_group_attribute_woven_jersey_knitted_mix_baby">Woven/Jersey/Knitted mix Baby</string>
+    <string name="article_garment_group_attribute_other">Other</string>
+    <!-- endregion -->
+
+    <!-- region Article Graphical appearance values -->
+    <string name="article_graphical_appearance_attribute_all_over_pattern">All over pattern</string>
+    <string name="article_graphical_appearance_attribute_application_3d">Application/3D</string>
+    <string name="article_graphical_appearance_attribute_argyle">Argyle</string>
+    <string name="article_graphical_appearance_attribute_chambray">Chambray</string>
+    <string name="article_graphical_appearance_attribute_check">Check</string>
+    <string name="article_graphical_appearance_attribute_colour_blocking">Colour blocking</string>
+    <string name="article_graphical_appearance_attribute_contrast">Contrast</string>
+    <string name="article_graphical_appearance_attribute_denim">Denim</string>
+    <string name="article_graphical_appearance_attribute_dot">Dot</string>
+    <string name="article_graphical_appearance_attribute_embroidery">Embroidery</string>
+    <string name="article_graphical_appearance_attribute_front_print">Front print</string>
+    <string name="article_graphical_appearance_attribute_glittering_metallic">Glittering/Metallic</string>
+    <string name="article_graphical_appearance_attribute_hologram">Hologram</string>
+    <string name="article_graphical_appearance_attribute_jacquard">Jacquard</string>
+    <string name="article_graphical_appearance_attribute_lace">Lace</string>
+    <string name="article_graphical_appearance_attribute_melange">Melange</string>
+    <string name="article_graphical_appearance_attribute_mesh">Mesh</string>
+    <string name="article_graphical_appearance_attribute_metallic">Metallic</string>
+    <string name="article_graphical_appearance_attribute_mixed_solid_pattern">Mixed solid/pattern</string>
+    <string name="article_graphical_appearance_attribute_neps">Neps</string>
+    <string name="article_graphical_appearance_attribute_other_pattern">Other pattern</string>
+    <string name="article_graphical_appearance_attribute_other_structure">Other structure</string>
+    <string name="article_graphical_appearance_attribute_placement_print">Placement print</string>
+    <string name="article_graphical_appearance_attribute_sequin">Sequin</string>
+    <string name="article_graphical_appearance_attribute_slub">Slub</string>
+    <string name="article_graphical_appearance_attribute_solid">Solid</string>
+    <string name="article_graphical_appearance_attribute_stripe">Stripe</string>
+    <string name="article_graphical_appearance_attribute_transparent">Transparent</string>
+    <string name="article_graphical_appearance_attribute_treatment">Treatment</string>
+    <!-- endregion -->
+
+    <!-- region Article Index values -->
+    <string name="article_index_attribute_baby_sizes_50_98">Baby Sizes 50-98</string>
+    <string name="article_index_attribute_children_accessories">Children Accessories</string>
+    <string name="article_index_attribute_swimwear">Swimwear</string>
+    <string name="article_index_attribute_children_sizes_134_170">Children Sizes 134-170</string>
+    <string name="article_index_attribute_children_sizes_92_140">Children Sizes 92-140</string>
+    <string name="article_index_attribute_divided">Divided</string>
+    <string name="article_index_attribute_ladies_accessories">Ladies Accessories</string>
+    <string name="article_index_attribute_ladieswear">Ladieswear</string>
+    <string name="article_index_attribute_lingeries_tights">Lingeries/Tights</string>
+    <string name="article_index_attribute_menswear">Menswear</string>
+    <string name="article_index_attribute_sport">Sport</string>
+    <string name="article_index_attribute_other">Other</string>
+    <!-- endregion -->
+
+    <!-- region Article Shade appearance values -->
+    <string name="article_shade_attribute_bright">Bright</string>
+    <string name="article_shade_attribute_dark">Dark</string>
+    <string name="article_shade_attribute_dusty_light">Dusty Light</string>
+    <string name="article_shade_attribute_light">Light</string>
+    <string name="article_shade_attribute_medium">Medium</string>
+    <string name="article_shade_attribute_medium_dusty">Medium Dusty</string>
+    <string name="article_shade_attribute_other">Other</string>
+    <!-- endregion -->
+
+    <!-- region Search Articles Screen -->
+    <string name="search_articles_screen_top_appbar_title">Search</string>
+    <string name="search_articles_screen_name_label">Name</string>
+    <string name="search_articles_screen_brand_label">Brand</string>
+    <string name="search_articles_screen_price_label">Price</string>
+    <string name="search_articles_screen_price_range_template">%1$s HUF - %2$s HUF</string>
+    <string name="search_articles_screen_color_label">Color</string>
+    <string name="search_articles_screen_shade_label">Shade</string>
+    <string name="search_articles_screen_graphical_appearance_label">Graphical appearance</string>
+    <string name="search_articles_screen_index_label">Index</string>
+    <string name="search_articles_screen_garment_group_label">Garment group</string>
+    <string name="search_articles_screen_cta_button_search_text">Search</string>
+    <!-- endregion -->
+
+    <!-- region Search Articles Result Screen -->
+    <string name="search_articles_result_screen_top_appbar_title">Results</string>
+    <string name="search_articles_result_screen_empty_results_title">No appropriate clothing article was found.</string>
+    <string name="search_articles_result_screen_empty_results_change_filter_button_text">Change filter</string>
+    <!-- endregion -->
+
+    <!-- region Article Preview Card -->
+    <string name="article_preview_card_more_details_button_text">More details</string>
+    <!-- endregion -->
+
+    <!-- region Basket Screen -->
+    <string name="basket_screen_top_appbar_title">Basket</string>
+    <string name="basket_screen_content_label">Contents</string>
+    <string name="basket_screen_total_amount_label">Total amount:</string>
+    <string name="basket_screen_amount_template">%1$s HUF</string>
+    <string name="basket_screen_cta_button_text">Purchase</string>
+    <!-- endregion -->
+
+    <!-- region Finalize Order Screen -->
+    <string name="finalize_order_screen_top_appbar_title">Finalize order</string>
+    <string name="finalize_order_screen_country_input_label">Country</string>
+    <string name="finalize_order_screen_city_input_label">City</string>
+    <string name="finalize_order_screen_street_input_label">Street</string>
+    <string name="finalize_order_screen_total_amount_label">Total amount:</string>
+    <string name="finalize_order_screen_amount_template">%1$s HUF</string>
+    <string name="finalize_order_screen_cta_button_text">Place order</string>
+    <!-- endregion -->
+
+    <!-- region Order History Screen -->
+    <string name="order_history_screen_top_appbar_title">Purchase history</string>
+    <string name="order_history_screen_order_history_card_item_count_template">%1$d items</string>
+    <string name="order_history_screen_order_history_list_item_amount_template">%1$s HUF</string>
+    <!-- endregion -->
 </resources>

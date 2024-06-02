@@ -1,0 +1,6 @@
+package hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.usermanagement.datasource
+
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.usermanagement.repository.datasource.UserPersistentSecureDatasource
+
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
+internal expect class MultiplatformUserPersistentSecureDatasource : UserPersistentSecureDatasource

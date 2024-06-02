@@ -1,13 +1,18 @@
 [versions]
+android-desugaring = "2.0.4"
 android-sdk-compile = "34"
 android-sdk-min = "21"
 androidx-activity = "1.9.0"
-androidx-lifecycle = "2.7.0"
+androidx-security-crypto = "1.1.0-alpha06"
+androidx-lifecycle = "2.7.0"    # https://issuetracker.google.com/issues/336842920#comment8
 androidx-splashScreen = "1.0.1"
-apollo-kotlin = "4.0.0-beta.4"
+apollo-kotlin = "4.0.0-beta.5"
+bouncyCastle = "1.78.1"
+coil = "3.0.0-alpha06"
 compose-jetpack = "1.6.7"
 compose-multipatform = "1.6.2"
-compose-placeholder = "1.0.7"
+compose-placeholder = "1.0.8"
+credentialSecureStorage = "1.0.0"
 coroutines = "1.8.0"
 decompose = "3.0.0"
 essenty = "2.0.0"
@@ -25,22 +30,30 @@ ksp = "1.9.23-1.0.20"
 ktor = "2.3.10"
 ktor-client = "3.0.0-wasm2"
 material3-windowSizeClass = "0.5.0"
+multiplatform-settings = "1.1.1"
 mvikotlin = "4.0.0"
 slf4j = "2.0.13"
 spring-security = "6.2.4"
 sqldelight = "2.0.1"
 
 [libraries]
+android-desugaring = { module = "com.android.tools:desugar_jdk_libs", version.ref = "android-desugaring" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
 androidx-lifecycle-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "androidx-security-crypto" }
 androidx-splashScreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashScreen" }
 apollo-kotlin-runtime = { module = "com.apollographql.apollo3:apollo-runtime", version.ref = "apollo-kotlin" }
+bouncyCastle = { module = "org.bouncycastle:bcprov-jdk18on", version.ref = "bouncyCastle" }
+coil = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil" }
 compose-jetpack-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-jetpack" }
 compose-jetpack-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-jetpack" }
 compose-placeholder-material3 = { module = "com.eygraber:compose-placeholder-material3", version.ref = "compose-placeholder" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
+credentialSecureStorage = { module = "com.microsoft:credential-secure-storage", version.ref = "credentialSecureStorage" }
 decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-composeExtension = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
 essenty-lifecycle = { module = "com.arkivanov.essenty:lifecycle", version.ref = "essenty" }
@@ -60,24 +73,28 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 ktor-client-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor-client" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor-client" }
-ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor-client" }
+ktor-client-engine-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor-client" }
+ktor-client-engine-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor-client" }
+ktor-client-engine-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor-client" }
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor-client" }
-ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor-client" }
 ktor-server-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
 ktor-server-auth-jwt = { module = "io.ktor:ktor-server-auth-jwt", version.ref = "ktor" }
 ktor-server-cio = { module = "io.ktor:ktor-server-cio-jvm", version.ref = "ktor" }
 ktor-server-contentNegotiation = { module = "io.ktor:ktor-server-content-negotiation-jvm", version.ref = "ktor" }
 ktor-server-cors = { module = "io.ktor:ktor-server-cors-jvm", version.ref = "ktor" }
-ktor-kotlinx-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor-client" }
+ktor-kotlinx-serialization-json-client = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor-client" }
+ktor-kotlinx-serialization-json-server = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 material3-windowSizeClass = { module = "dev.chrisbanes.material3:material3-window-size-class-multiplatform", version.ref = "material3-windowSizeClass" }
+multiplatformSettings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatform-settings" }
 mvikotlin-core = { module = "com.arkivanov.mvikotlin:mvikotlin", version.ref = "mvikotlin" }
 mvikotlin-coroutines = { module = "com.arkivanov.mvikotlin:mvikotlin-extensions-coroutines", version.ref = "mvikotlin" }
 mvikotlin-logging = { module = "com.arkivanov.mvikotlin:mvikotlin-logging", version.ref = "mvikotlin" }
 mvikotlin-main = { module = "com.arkivanov.mvikotlin:mvikotlin-main", version.ref = "mvikotlin" }
 spring-security-crypto = { module = "org.springframework.security:spring-security-crypto", version.ref = "spring-security" }
 sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
-sqldelight-jvm-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
-sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
+sqldelight-driver-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-driver-jvm = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
+sqldelight-driver-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradle-plugin" }

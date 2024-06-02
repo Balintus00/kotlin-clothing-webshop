@@ -10,10 +10,13 @@ import org.slf4j.helpers.NOPMDCAdapter
 
 // Source: https://github.com/psh/KermitExt/blob/main/slf4j-over-kermit/src/jvmMain/kotlin/com/gatebuzz/kermit/ext/KermitServiceProvider.kt
 
-@Suppress("unused ")
+@Suppress("unused")
 class KermitServiceProvider : org.slf4j.spi.SLF4JServiceProvider {
+
     private val markerFactory = BasicMarkerFactory()
+
     private val mdcAdapter = NOPMDCAdapter()
+
     override fun getLoggerFactory() = ILoggerFactory {
         Slf4jKermitLogger(it, config)
     }
