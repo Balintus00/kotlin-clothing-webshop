@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -65,10 +66,12 @@ internal fun ArticleDetailsScreenTopAppbar(
     topAppBarScrollBehavior: TopAppBarScrollBehavior,
     modifier: Modifier = Modifier,
 ) {
+    val viewState by component.viewState.collectAsStateWithLifecycle()
+
     TopAppBar(
         modifier = modifier,
         navigationIcon = {
-            IconButton(onClick = {/*component::navigateBack TODO*/ }) {
+            IconButton(onClick = viewState::navigateBack) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Default.ArrowBack,
                     contentDescription = null,
@@ -118,7 +121,7 @@ internal fun ArticleDetailsScreen(
                     //  Also the sizing is not correct like this.
                     AsyncImage(
                         model = imageUrl,
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth().height(40.dp),
                         contentDescription = null,
                     )
                     Text(
@@ -349,9 +352,11 @@ internal fun CompactArticleDetailsFloatingActionButton(
     component: ArticleDetailsComponent,
     modifier: Modifier = Modifier,
 ) {
+    val viewState by component.viewState.collectAsStateWithLifecycle()
+
     FloatingActionButton(
         modifier = modifier,
-        onClick = { /* TODO component.addToBasket()*/ },
+        onClick = { (viewState as? Loaded)?.addToBasket() },
     ) {
         Icon(
             painter = painterResource(Res.drawable.ic_add_shopping_cart),
@@ -366,11 +371,13 @@ internal fun MediumAndExpandedArticleDetailsFloatingActionButton(
     component: ArticleDetailsComponent,
     modifier: Modifier = Modifier,
 ) {
+    val viewState by component.viewState.collectAsStateWithLifecycle()
+
     FloatingActionButton(
         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
         contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
         modifier = modifier.padding(bottom = FLOATING_ACTION_BUTTON_ON_NAVIGATION_RAIL_VERTICAL_SPACE),
-        onClick = { /* TODO component.addToBasket()*/ },
+        onClick = { (viewState as? Loaded)?.addToBasket() },
     ) {
         Icon(
             painter = painterResource(Res.drawable.ic_add_shopping_cart),

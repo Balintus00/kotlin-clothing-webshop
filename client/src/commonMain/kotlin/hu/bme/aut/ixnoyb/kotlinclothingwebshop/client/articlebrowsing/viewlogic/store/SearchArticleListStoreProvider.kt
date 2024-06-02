@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-internal class CharacterListStoreProvider(
+internal class SearchArticleListStoreProvider(
     private val filter: ArticleFilter,
     private val storeFactory: StoreFactory,
 ) : KoinComponent {

@@ -13,6 +13,7 @@ import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.viewlogic.
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.viewlogic.DefaultArticleBrowsingRootComponent.Config.SearchArticles
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.viewlogic.DefaultArticleBrowsingRootComponent.Config.SearchArticlesResult
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.viewlogic.model.ArticleFilter
+import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.articlebrowsing.viewlogic.model.toDomainArticleFilter
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.client.common.viewlogic.toStateFlow
 import hu.bme.aut.ixnoyb.kotlinclothingwebshop.domain.article.ArticleID
 import kotlinx.coroutines.flow.StateFlow
@@ -101,6 +102,7 @@ internal class DefaultArticleBrowsingRootComponent(
                 Child.SearchArticlesResult(
                     DefaultSearchArticlesResultComponent(
                         componentContext = componentContext,
+                        filter = config.filter.toDomainArticleFilter(),
                         navigateBackAction = {
                             navigation.popWhile { (it is SearchArticles).not() }
                         },
