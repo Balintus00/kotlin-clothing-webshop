@@ -3,6 +3,14 @@
 [![Kotlin](https://img.shields.io/badge/kotlin-1.9.20-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![MIT License](https://img.shields.io/github/license/Balintus00/kotlin-clothing-webshop)](https://github.com/Balintus00/kotlin-clothing-webshop/blob/master/LICENSE.txt)
 
+## Archived
+
+This project has been archived as of 2025 January 26. It is incomplete and will no longer be actively developed or maintained.
+
+### Why is this project archived?
+
+The primary reason for archiving this project is that I have decided to prioritize and focus on other projects that better align with my current goals and interests. While this project was a valuable learning experience, continuing it is no longer feasible or a priority.
+
 ## Kotlin Multiplatform Sample Application
 
 Kotlin Clothing Webshop is Kotlin Multiplatform application. My main goal with the project to learn
